@@ -129,11 +129,17 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
         ]}/>
 
 
-        <Divider />
+<Divider />
+<DrawerList listItems={          [
+            {"linkText": "Products List", icon:<InboxIcon />,link:"/products"},
+            {"linkText": "Create Product", icon:<InboxIcon />,link:"/products/create"},  
+        ]}/>
+<Divider />
 
         <DrawerList listItems={          [
-            {"linkText": "Home", icon:<InboxIcon />,link:"/"},
-            {"linkText": "About", icon:<InboxIcon />,link:"/about"},  
+            {"linkText": "Login", icon:<InboxIcon />,link:"/login"}, 
+            {"linkText": "Sign Up", icon:<InboxIcon />,link:"/signup"},
+ 
         ]}/>
 
 
