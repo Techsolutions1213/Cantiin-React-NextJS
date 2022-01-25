@@ -17,11 +17,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route,      Link } from "react-router-dom";
 
 
+/* Routes */
 import Home from './Routes/Home';
-
+import About from './Routes/About';
+import Login from './Routes/Login';
+import SignUp from './Routes/Signup';
+import CreateProduct from './Routes/Products/CreateProduct';
+import ProductsList from './Routes/Products/ProductsList';
 
 
 const drawerWidth = 240;
@@ -146,7 +151,12 @@ export default function App() {
       <Main open={open}>
         <DrawerHeader />
         <Routes>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about/" element={<About />} />
+        <Route path="/login/" element={<Login />} />
+        <Route path="/signup/" element={<SignUp />} />
+        <Route path="/products/create/" element={<CreateProduct />} />
+        <Route path="/products/" element={<ProductsList />} />
         </Routes>
       </Main>
     </Box>
