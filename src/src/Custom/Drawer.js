@@ -18,8 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Routes, Route,      Link, useNavigate } from "react-router-dom";
-
-
+import DrawerList from '../Components/DrawerList';
 
 
 
@@ -123,40 +122,21 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {
-          
-          
-          [
-            
 
+        <DrawerList listItems={          [
             {"linkText": "Home", icon:<InboxIcon />,link:"/"},
-            {"linkText": "Login", icon:<InboxIcon />,link:"/login"},
+            {"linkText": "About", icon:<InboxIcon />,link:"/about"},  
+        ]}/>
 
-        
-        
-        ].map(({linkText,icon, link}, index) => (
-          
-          <ListItem button key={linkText} onClick={()=>{navigate(link, { replace: true });}}>
-              <ListItemIcon>
-                {icon}
-              </ListItemIcon>
-              <ListItemText primary={linkText} />
-            </ListItem>
-          
-          ))}
-        </List>
+
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+
+        <DrawerList listItems={          [
+            {"linkText": "Home", icon:<InboxIcon />,link:"/"},
+            {"linkText": "About", icon:<InboxIcon />,link:"/about"},  
+        ]}/>
+
+
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
