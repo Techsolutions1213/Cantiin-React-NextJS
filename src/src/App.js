@@ -20,6 +20,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import { Routes, Route, Link } from "react-router-dom";
 
 
+import Home from './Routes/Home';
+
 
 
 const drawerWidth = 240;
@@ -145,7 +147,6 @@ export default function App() {
         <DrawerHeader />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
         </Routes>
       </Main>
     </Box>
@@ -154,6 +155,7 @@ export default function App() {
 
 
 /*
+          <Route path="about" element={<About />} />
 
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
