@@ -87,11 +87,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 
 
 	//const authContext = useContext(AuthContext);
-	const authContext = useContext(AuthContext);
+	const {is_authenticated, LogOut} = useContext(AuthContext);
 
 
-	const accountSection = authContext.is_authenticated?(
-		<Button color="inherit" onClick={()=>{navigate("/login/");}}>Logout</Button>
+	const accountSection = is_authenticated?(
+		<Button color="inherit" onClick={()=>{LogOut();}}>Logout</Button>
 	):(					
 		<>
 			<Button color="inherit" onClick={()=>{navigate("/login/");}}>Login</Button>
@@ -99,7 +99,6 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 		</>
 	);
 
-	console.log(authContext.is_authenticated);
 	//console.log(authState, Logout);
 
 	return (
