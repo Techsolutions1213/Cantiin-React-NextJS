@@ -24,6 +24,9 @@ const ProductsList = () => {
     
 	const [state,setState] = useState(initialState);
 
+
+	console.log(state);
+
 	const handleSucessfulResponse = (response) =>
 	{
 		//console.log(response);

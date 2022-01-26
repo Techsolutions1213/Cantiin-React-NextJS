@@ -1,7 +1,7 @@
 import { getUrlPage } from "../Functions/urls";
 import React, { Component } from "react";
 
-import {Link} from "react-router-dom";
+import { Routes, Route,      Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import {getUrlPath} from "../Functions/urls";
 
@@ -29,6 +29,9 @@ It must have one of these values
 
 
 const PaginationButton = (props) => {
+	let navigate = useNavigate();
+	let [searchParams, setSearchParams] = useSearchParams();
+	console.log(searchParams);
 
 	let {type, link = null, active = false} = props;
 
@@ -78,16 +81,21 @@ const PaginationButton = (props) => {
 		</li>;
 	}
 	else{
-		return <li className="paginationListIndex">
+		return (<li className="paginationListIndex">
             
-			<Link className="paginationLink" to={getUrlPath(link)}>
-				<button className="PaginationButton">{buttonText}</button>
-			</Link>
-		</li>;
+			<button className="PaginationButton" onClick={()=>{navigate(`/products?page=${pageNumber}`
+				, { replace: true });}}>{buttonText}</button>
+		</li>);
 	}
 
 };
+/*
+<Link className="paginationLink" to={getUrlPath(link)}>
 
+</Link>
+
+
+*/
 
 
 export default PaginationButton;
