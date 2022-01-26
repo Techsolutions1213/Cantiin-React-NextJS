@@ -17,10 +17,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Routes, Route,      Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import DrawerList from "../Components/DrawerList";
 import Button from "@mui/material/Button";
-
+import AuthContext from "../Contexts/Authentication";
 
 
 const drawerWidth = 240;
@@ -84,6 +84,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
+
+
+    const {authState, refetchIsAuthenticated} = useContext(AuthContext);
+
+
 
 	return (
 		<Box sx={{ display: "flex" }}>

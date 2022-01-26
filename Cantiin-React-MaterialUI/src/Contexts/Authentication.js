@@ -35,12 +35,21 @@ const AuthContextProvider = (props) => {
 			.then((response)=>{successfulUserResponse(response);})
 			.catch((err)=>{failureUserResponse();});
 	};
+
+	const LogOut = (e) =>{
+		//console.log("Let's Logout");
+		fetchers.auth.logout()
+			.then((response)=>{refetchIsAuthenticated();})
+			.catch((err)=>{refetchIsAuthenticated();});
+	};
+
+
     
 	useEffect(()=>{refetchIsAuthenticated();},[localStorage.getItem("authState")]);
 
 	return ( 
 		<AuthContext.Provider 
-			value={{...authState, refetchIsAuthenticated, successfulUserResponse, failureUserResponse}}>
+			value={{...authState, refetchIsAuthenticated, successfulUserResponse, failureUserResponse, LogOut}}>
 			{props.children}
 		</AuthContext.Provider> );
 };
