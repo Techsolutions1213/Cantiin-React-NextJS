@@ -89,7 +89,17 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 	//const authContext = useContext(AuthContext);
 	const authContext = useContext(AuthContext);
 
-	console.log(authContext);
+
+	const accountSection = authContext.is_authenticated?(
+		<Button color="inherit" onClick={()=>{navigate("/login/");}}>Logout</Button>
+	):(					
+		<>
+			<Button color="inherit" onClick={()=>{navigate("/login/");}}>Login</Button>
+			<Button color="inherit" onClick={()=>{navigate("/signup/");}}>Signup</Button>
+		</>
+	);
+
+	console.log(authContext.is_authenticated);
 	//console.log(authState, Logout);
 
 	return (
@@ -109,9 +119,8 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 					<Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Canttin - Home
 					</Typography>
-					
-					<Button color="inherit" onClick={()=>{navigate("/login/");}}>Login</Button>
-					<Button color="inherit" onClick={()=>{navigate("/signup/");}}>Signup</Button>
+					{accountSection}
+
 				</Toolbar>
 			</AppBar>
 			<Drawer
