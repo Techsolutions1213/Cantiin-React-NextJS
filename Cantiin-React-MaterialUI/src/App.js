@@ -20,7 +20,7 @@ const App = ()=>{
 	const DrawerContent = (        
 		<AuthContextProvider>
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="/" element={<ProductsList />} />
 				<Route path="/about/" element={<About />} />
 				<Route path="/login/" element={<Login />} />
 				<Route path="/signup/" element={<SignUp />} />
