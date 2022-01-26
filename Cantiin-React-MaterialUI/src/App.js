@@ -2,6 +2,13 @@ import * as React from "react";
 import { Routes, Route,      Link } from "react-router-dom";
 import Drawer from "./Custom/Drawer";
 
+
+
+/*Contexts*/
+import { AuthContextProvider } from "../../../Cantiin-React/cantiin/src/contexts/Authentication";
+
+
+
 /* Routes */
 import Home from "./Routes/Home";
 import About from "./Routes/About";
@@ -12,14 +19,18 @@ import ProductsList from "./Routes/Products/ProductsList";
 
 const App = ()=>{
 	const DrawerContent = (        
-		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/about/" element={<About />} />
-			<Route path="/login/" element={<Login />} />
-			<Route path="/signup/" element={<SignUp />} />
-			<Route path="/products/create/" element={<CreateProduct />} />
-			<Route path="/products/" element={<ProductsList />} />
-		</Routes>);
+		<AuthContextProvider>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/about/" element={<About />} />
+				<Route path="/login/" element={<Login />} />
+				<Route path="/signup/" element={<SignUp />} />
+				<Route path="/products/create/" element={<CreateProduct />} />
+				<Route path="/products/" element={<ProductsList />} />
+			</Routes>
+		</AuthContextProvider>
+		
+	);
 
 	return (<Drawer DrawerContent={DrawerContent} />);
 };
