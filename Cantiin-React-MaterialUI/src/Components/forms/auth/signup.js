@@ -2,7 +2,7 @@ import React, {useState, useContext} from "react";
 import fetchers from "../../../Functions/fetchers";
 import {Redirect} from "react-router-dom";
 
-import AuthContext from "../../../contexts/Authentication";
+import AuthContext from "../../../Contexts/Authentication";
 
 
 const axios = require("axios");
