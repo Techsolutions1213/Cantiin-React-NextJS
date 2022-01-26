@@ -1,12 +1,22 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 
-export default function Login() {
-	return (
-		<>
-			<Typography paragraph>
-    Login
-			</Typography>
-		</>
-	);
-}
+
+import LoginForm from "../Components/forms/auth/login";
+
+
+const LoginRoute = (props) => {
+    
+    
+	return <div>
+
+		<h1>  
+      Login:
+		</h1>
+    
+		<LoginForm/>
+
+
+	</div>;
+};
+ 
+export default LoginRoute;
