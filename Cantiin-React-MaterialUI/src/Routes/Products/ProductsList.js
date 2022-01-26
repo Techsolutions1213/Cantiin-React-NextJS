@@ -6,12 +6,17 @@ import Pagination from "../../Components/pagination";
 import ProductCard from "../../Components/cards/product";
 
 
+import { Routes, Route,      Link, useNavigate, useSearchParams } from "react-router-dom";
+
+
 import fetchers from "../../Functions/fetchers";
 
 
 
 const ProductsList = () => {
     
+	const [searchParams, setSearchParameters] = useSearchParams();
+	const currentPage = searchParams.get("page");
 	const initialState = {
 		"loaded":false,
 		"items":[],
@@ -77,7 +82,7 @@ const ProductsList = () => {
 		fetchers.products.list(getCurrentWindowPage())
 			.then((response)=>{handleSucessfulResponse(response);})
 			.catch((err)=>{handleFailingResponse(err);});       
-	},[window.location.href]);
+	},[currentPage]);
     
     
 	if (!state.loaded)

@@ -30,13 +30,8 @@ It must have one of these values
 
 const PaginationButton = (props) => {
 	let navigate = useNavigate();
-	let [searchParams, setSearchParams] = useSearchParams();
-	console.log(searchParams);
-
 	let {type, link = null, active = false} = props;
-
 	if(link){var pageNumber = getUrlPage(link);}
-    
 	//console.log(`props is:`);
 	//console.log(this.props);
 
