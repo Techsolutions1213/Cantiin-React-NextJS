@@ -1,5 +1,5 @@
 import {createContext, useState, useEffect} from "react";
-import fetchers from "../helpers/fetchers";
+import fetchers from "../Functions/fetchers";
 
 const AuthContext = createContext();
 
