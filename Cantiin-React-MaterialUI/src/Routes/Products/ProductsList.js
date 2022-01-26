@@ -1,12 +1,14 @@
 import { Component, Fragment, useState, useEffect } from "react";
 import {getItemsList, getAllResultsNumber,
 	getCurrentWindowPage,getCurrentResponsePage,
-	getApiResponsePage,getMaxPage} from "../../functions/fetching/list";
-import Pagination from "../../components/pagination";
-import ProductCard from "../../components/cards/product";
+	getApiResponsePage,getMaxPage} from "../../Functions/fetching/list";
+import Pagination from "../../Components/pagination";
+import ProductCard from "../../Components/cards/product";
 
 
-import fetchers from "../../helpers/fetchers";
+import fetchers from "../../Functions/fetchers";
+
+
 
 const ProductsList = () => {
     

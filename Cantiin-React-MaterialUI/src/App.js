@@ -5,8 +5,7 @@ import Drawer from "./Custom/Drawer";
 
 
 /*Contexts*/
-import { AuthContextProvider } from "../../../Cantiin-React/cantiin/src/contexts/Authentication";
-
+import { AuthContextProvider } from "./Contexts/Authentication";
 
 
 /* Routes */
