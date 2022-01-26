@@ -15,6 +15,7 @@ import Login from "./Routes/Login";
 import SignUp from "./Routes/Signup";
 import CreateProduct from "./Routes/Products/CreateProduct";
 import ProductsList from "./Routes/Products/ProductsList";
+import TestRoute from "./Routes/Test";
 
 const App = ()=>{
 	const DrawerContent = (        
@@ -26,6 +27,7 @@ const App = ()=>{
 				<Route path="/signup/" element={<SignUp />} />
 				<Route path="/products/create/" element={<CreateProduct />} />
 				<Route path="/products/" element={<ProductsList />} />
+				<Route path="/test/" element={<TestRoute />} />
 			</Routes>
 		</AuthContextProvider>
 		

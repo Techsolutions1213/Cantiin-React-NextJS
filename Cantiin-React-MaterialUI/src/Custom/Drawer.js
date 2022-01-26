@@ -19,6 +19,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Routes, Route,      Link, useNavigate } from "react-router-dom";
 import DrawerList from "../Components/DrawerList";
+import Button from "@mui/material/Button";
 
 
 
@@ -98,9 +99,12 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h6" noWrap component="div">
+					<Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Canttin - Home
 					</Typography>
+					
+					<Button color="inherit" onClick={()=>{navigate("/login/");}}>Login</Button>
+					<Button color="inherit" onClick={()=>{navigate("/signup/");}}>Signup</Button>
 				</Toolbar>
 			</AppBar>
 			<Drawer
