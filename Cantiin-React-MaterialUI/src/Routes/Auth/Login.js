@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import LoginForm from "../Components/forms/auth/login";
+import LoginForm from "../../Components/forms/auth/login";
 
 
 const LoginRoute = (props) => {
