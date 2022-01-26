@@ -28,7 +28,6 @@ const LoginForm = () => {
   
 	const {successfulUserResponse} = useContext(AuthContext);
 
-
 	const handleSubmit = (e) =>{
 		e.preventDefault();
     

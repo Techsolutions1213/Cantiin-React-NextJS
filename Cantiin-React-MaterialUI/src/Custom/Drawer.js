@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useContext} from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -86,9 +86,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 	};
 
 
-    const {authState, refetchIsAuthenticated} = useContext(AuthContext);
+	//const authContext = useContext(AuthContext);
+	const authContext = useContext(AuthContext);
 
-
+	console.log(authContext);
+	//console.log(authState, Logout);
 
 	return (
 		<Box sx={{ display: "flex" }}>

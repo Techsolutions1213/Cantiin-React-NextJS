@@ -19,21 +19,23 @@ import TestRoute from "./Routes/Test";
 
 const App = ()=>{
 	const DrawerContent = (        
-		<AuthContextProvider>
-			<Routes>
-				<Route path="/" element={<ProductsList />} />
-				<Route path="/about/" element={<About />} />
-				<Route path="/login/" element={<Login />} />
-				<Route path="/signup/" element={<SignUp />} />
-				<Route path="/products/create/" element={<CreateProduct />} />
-				<Route path="/products/" element={<ProductsList />} />
-				<Route path="/test/" element={<TestRoute />} />
-			</Routes>
-		</AuthContextProvider>
+		<Routes>
+			<Route path="/" element={<ProductsList />} />
+			<Route path="/about/" element={<About />} />
+			<Route path="/login/" element={<Login />} />
+			<Route path="/signup/" element={<SignUp />} />
+			<Route path="/products/create/" element={<CreateProduct />} />
+			<Route path="/products/" element={<ProductsList />} />
+			<Route path="/test/" element={<TestRoute />} />
+		</Routes>
 		
 	);
 
-	return (<Drawer DrawerContent={DrawerContent} />);
+	return (
+		<AuthContextProvider>
+			<Drawer DrawerContent={DrawerContent} />
+		</AuthContextProvider>
+	);
 };
 
 
