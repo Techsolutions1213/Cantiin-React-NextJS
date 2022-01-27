@@ -17,6 +17,7 @@ import AuthContext from "../Contexts/Authentication";
 import fetchers from "../Functions/fetchers";
 
 
+
 function Copyright(props) {
 	return (
 		<Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -117,12 +118,12 @@ export default function SignIn() {
 						flexDirection: "column",
 						alignItems: "center",
 					}}
-				>
+					>
 					<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
 						<LockOutlinedIcon />
 					</Avatar>
 					<Typography component="h1" variant="h5">
-            Sign in
+            		Sign in
 					</Typography>
 					<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 						<TextField
@@ -163,20 +164,16 @@ export default function SignIn() {
 							variant="contained"
 							sx={{ mt: 3, mb: 2 }}
 						>
-              Sign In
+              			Sign In
 						</Button>
-						<Grid container>
-							<Grid item xs>
-								<Link href="#" variant="body2">
-                  Forgot password?
-								</Link>
-							</Grid>
-							<Grid item>
+						<Container  sx={{
+							display:"flex",
+							justifyContent:"center",
+						}}>
 								<Link href="#" variant="body2">
 									{"Don't have an account? Sign Up"}
 								</Link>
-							</Grid>
-						</Grid>
+						</Container>
 					</Box>
 				</Box>
 				<Copyright sx={{ mt: 8, mb: 4 }} />
