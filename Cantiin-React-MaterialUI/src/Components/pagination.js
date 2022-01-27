@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from "react";
 
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
 import {buildUrl, getPureUrl, getUrlQueryParameters,getUrlSpecificQueryPramater,
 	getUrlPage} from "../Functions/urls";
 import {getItemsList, getAllResultsNumber, getCurrentWindowPage,getCurrentResponsePage,
@@ -16,35 +19,25 @@ import {getCurrentPagePaginationButton,getPrevPagePaginationButton,
 
 
 
-const Pagination = (props) => {
+const PaginationContent = (props) => {
     
 	let response = props.response;
 	let currentUrl = window.location.href;
 	let maxPageNumber = getMaxPage(response);
     
 	return (
-		<ul className="pagination"> 
-			{getFirstPagePaginationButton(currentUrl)}
-			{getPrevPagePaginationButton(currentUrl)}
-			{getPrevPagesPaginationButtons(currentUrl)}
-            
-			{getCurrentPagePaginationButton(currentUrl)}
-            
-			{getNextPagesPaginationButtons(
-				currentUrl, maxPageNumber)}
-			{getNextPagePaginationButton(
-				currentUrl, maxPageNumber)}
-			{getLastPagePaginationButton(
-				currentUrl, maxPageNumber)}
-        
-		</ul>  
+		<>
+		<Stack spacing={2}>
+		<Pagination count={maxPageNumber} showFirstButton showLastButton />
+	  </Stack> 
+		</>
 	);
 };
  
 
 
 
-export default Pagination;
+export default PaginationContent;
 
 
 
