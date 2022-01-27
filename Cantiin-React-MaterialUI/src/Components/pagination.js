@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { useSearchParams } from "react-router-dom";
+
 
 import {buildUrl, getPureUrl, getUrlQueryParameters,getUrlSpecificQueryPramater,
 	getUrlPage} from "../Functions/urls";
@@ -20,9 +22,14 @@ import {getCurrentPagePaginationButton,getPrevPagePaginationButton,
 
 
 const PaginationContent = (props) => {
-    
+    let [searchParams, setSearchParams] = useSearchParams();
+
+	const currentPage = parseInt(searchParams.get("page")) || 1;
+
+	console.log("currentPage");
+	console.log(currentPage);
+
 	let response = props.response;
-	let currentUrl = window.location.href;
 	let maxPageNumber = getMaxPage(response);
     
 	return (
