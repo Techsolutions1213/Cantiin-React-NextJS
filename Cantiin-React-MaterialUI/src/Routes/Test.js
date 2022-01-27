@@ -40,21 +40,6 @@ export default function SignIn() {
 	const [errMessage,setErrorMessage] = useState("");
 	const [formErrors,setFormErrors] = useState({"username":"", "password":""});
 
-	/*
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		// eslint-disable-next-line no-console
-		console.log({
-			username: data.get("username"),
-			password: data.get("password"),
-		});
-	};
-*/
-
-
-
-
 	const handleSubmit = (event) =>{
 		event.preventDefault();
 		const formData = new FormData(event.currentTarget);
@@ -170,13 +155,12 @@ export default function SignIn() {
 							display:"flex",
 							justifyContent:"center",
 						}}>
-								<Link href="#" variant="body2">
+								<Link href="/signup/" variant="body2">
 									{"Don't have an account? Sign Up"}
 								</Link>
 						</Container>
 					</Box>
 				</Box>
-				<Copyright sx={{ mt: 8, mb: 4 }} />
 			</Container>
 		</ThemeProvider>
 	);
