@@ -2,7 +2,6 @@ import { Component, Fragment, useState, useEffect } from "react";
 import {getItemsList, getAllResultsNumber,
 	getCurrentWindowPage,getCurrentResponsePage,
 	getApiResponsePage,getMaxPage} from "../../Functions/fetching/list";
-import PaginationOld from "../../Components/paginationold";
 import Pagination from "../../Components/pagination";
 import ProductCard from "../../Components/cards/product";
 
@@ -26,8 +25,6 @@ const ProductsList = () => {
 		"err":null
 	};
 
-
-    
 	const [state,setState] = useState(initialState);
 
 
@@ -109,10 +106,10 @@ const ProductsList = () => {
 			<div>
 				<h1>Products List:</h1>
 				<Pagination response={state.response}/>
-				<PaginationOld response={state.response}/>
 				<ul className="ProductsList">
 					{productsList}
 				</ul>
+				<Pagination response={state.response}/>
 			</div>
 		);
 	}
