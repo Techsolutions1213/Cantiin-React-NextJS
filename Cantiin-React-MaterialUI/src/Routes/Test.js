@@ -1,4 +1,4 @@
-import React,  {useState} from "react";
+import React,  {useState, useContext} from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,8 +13,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import fetchers from "../../Functions/fetchers";
-
+import AuthContext from "../Contexts/Authentication";
+import fetchers from "../Functions/fetchers";
 
 
 function Copyright(props) {
