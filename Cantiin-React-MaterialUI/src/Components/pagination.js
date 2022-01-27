@@ -27,11 +27,15 @@ const PaginationContent = (props) => {
 	const currentPage = parseInt(searchParams.get("page")) || 1;
 	let response = props.response;
 	let maxPageNumber = getMaxPage(response);
+
+	const handleChange = (event, newPage) => {
+		setSearchParams({page:newPage});
+	  };
     
 	return (
 		<>
 		<Stack spacing={2}>
-		<Pagination count={maxPageNumber} page={currentPage} showFirstButton showLastButton />
+		<Pagination count={maxPageNumber} page={currentPage} onChange={handleChange} showFirstButton showLastButton />
 	  </Stack> 
 		</>
 	);
