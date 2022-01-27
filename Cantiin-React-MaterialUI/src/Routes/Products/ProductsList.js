@@ -4,8 +4,8 @@ import {getItemsList, getAllResultsNumber,
 	getApiResponsePage,getMaxPage} from "../../Functions/fetching/list";
 import Pagination from "../../Components/pagination";
 import ProductCard from "../../Components/cards/product";
-
-
+import { Container } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Routes, Route,      Link, useNavigate, useSearchParams } from "react-router-dom";
 
 
@@ -105,11 +105,18 @@ const ProductsList = () => {
 		return (
 			<div>
 				<h1>Products List:</h1>
-				<Pagination response={state.response}/>
+				
+				<Container sx={{display:"flex", justifyContent:"center"}}>
+					<Pagination response={state.response} sx={{display:"flex", alignContent:"center"}}/>
+				</Container>
+				
 				<ul className="ProductsList">
 					{productsList}
 				</ul>
-				<Pagination response={state.response}/>
+				
+				<Container sx={{display:"flex", justifyContent:"center"}}>
+					<Pagination response={state.response} sx={{display:"flex", alignContent:"center"}}/>
+				</Container>
 			</div>
 		);
 	}
