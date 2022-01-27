@@ -4,6 +4,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useSearchParams } from "react-router-dom";
 import {getMaxPage} from "../Functions/fetching/list";
+import { color } from "@mui/system";
 
 const PaginationContent = (props) => {
     let [searchParams, setSearchParams] = useSearchParams();
@@ -16,7 +17,10 @@ const PaginationContent = (props) => {
 	return (
 		<>
 		<Stack spacing={2}>
-		<Pagination count={maxPageNumber} page={currentPage} onChange={handleChange} showFirstButton showLastButton />
+		<Pagination count={maxPageNumber} page={currentPage} onChange={handleChange} showFirstButton showLastButton 
+			variant="outlined" shape="rounded"
+		color="secondary"
+		/>
 	  </Stack> 
 		</>
 	);

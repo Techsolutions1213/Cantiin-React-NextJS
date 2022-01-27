@@ -107,7 +107,9 @@ const ProductsList = () => {
 				<h1>Products List:</h1>
 				
 				<Container sx={{display:"flex", justifyContent:"center"}}>
-					<Pagination response={state.response} sx={{display:"flex", alignContent:"center"}}/>
+					<Pagination response={state.response} sx={{display:"flex", alignContent:"center"}} 
+					
+					color="pink"/>
 				</Container>
 				
 				<ul className="ProductsList">
@@ -115,7 +117,7 @@ const ProductsList = () => {
 				</ul>
 				
 				<Container sx={{display:"flex", justifyContent:"center"}}>
-					<Pagination response={state.response} sx={{display:"flex", alignContent:"center"}}/>
+					<Pagination response={state.response} sx={{display:"flex", alignContent:"center"}} color="pink"/>
 				</Container>
 			</div>
 		);
