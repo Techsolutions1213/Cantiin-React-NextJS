@@ -37,7 +37,7 @@ export default function SignIn() {
 
 
 	const [errMessage,setErrorMessage] = useState("");
-	const [formErrors,setFormErrors] = useState("");
+	const [formErrors,setFormErrors] = useState({"username":"a", "password":"a"});
 
 	/*
 	const handleSubmit = (event) => {
@@ -89,7 +89,14 @@ export default function SignIn() {
 	};
 
 
-
+	const handleChange=(e)=>{
+		setFormErrors(
+			{
+					...formErrors,
+					[e.target.name]:""
+			}
+		);
+	};
 
 
 
@@ -131,6 +138,10 @@ export default function SignIn() {
 							label="Username"
 							name="username"
 							autoFocus
+							error={formErrors.username?true:false}
+							helperText={formErrors.username||undefined}
+							onChange={handleChange}
+
 						/>
 						<TextField
 							margin="normal"
@@ -140,6 +151,9 @@ export default function SignIn() {
 							label="Password"
 							type="password"
 							id="password"
+							error={formErrors.password?true:false}
+							helperText={formErrors.password||undefined}
+							onChange={handleChange}
 						/>
 						<Typography sx={{
 							display:"flex",
