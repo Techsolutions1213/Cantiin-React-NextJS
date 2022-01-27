@@ -120,6 +120,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 					>
 						<MenuIcon />
 					</IconButton>
+					
+					
+					<Link to="/">
+					<HomeIcon sx={{mr:2,mt:.5, color:"white"}}/>
+					</Link>
 					<Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Canttin - Home
 					</Typography>
