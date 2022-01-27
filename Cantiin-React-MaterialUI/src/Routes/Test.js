@@ -13,6 +13,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import fetchers from "../../Functions/fetchers";
+
+
+
 function Copyright(props) {
 	return (
 		<Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,20 +33,71 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+	const {successfulUserResponse} = useContext(AuthContext);
 
 
 	const [errMessage,setErrorMessage] = useState("");
 
-
+	/*
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
 		// eslint-disable-next-line no-console
 		console.log({
-			email: data.get("email"),
+			username: data.get("username"),
 			password: data.get("password"),
 		});
 	};
+*/
+
+
+
+
+	const handleSubmit = (event) =>{
+		event.preventDefault();
+		const formData = new FormData(event.currentTarget);
+		const username=  formData.get("username");
+		const password= formData.get("password");
+		setErrorMessage("");
+		
+
+		fetchers.auth.login({username, password})
+			.then(function (response) {
+				successfulUserResponse(response);
+				window.location.replace("/");
+			})
+			.catch(function (error) {
+				/*				
+				let data = error.response.data;
+				setForm({
+					...form,
+					errors:{
+						...form.errors,
+						...data
+					}
+				});*/
+			})
+			.catch(()=>{
+				setErrorMessage("Something went wrong");
+			});
+
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -67,10 +122,9 @@ export default function SignIn() {
 							margin="normal"
 							required
 							fullWidth
-							id="email"
-							label="Email Address"
-							name="email"
-							autoComplete="email"
+							id="username"
+							label="Username"
+							name="username"
 							autoFocus
 						/>
 						<TextField
@@ -81,13 +135,13 @@ export default function SignIn() {
 							label="Password"
 							type="password"
 							id="password"
-							autoComplete="current-password"
 						/>
-						<Typography component="h1" variant="h5" sx={{
+						<Typography sx={{
 							display:"flex",
 							justifyContent:"center",
+							color: "error.main" 
 						}}>
-            Sign in
+							{errMessage}
 						</Typography>
 						<Button
 							type="submit"

@@ -5,8 +5,7 @@ import LoginForm from "../../Components/forms/auth/login";
 
 
 const LoginRoute = (props) => {
-    
-    
+
 	return <div>
 
 		<h1>  
