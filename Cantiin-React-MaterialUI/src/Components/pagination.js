@@ -25,17 +25,13 @@ const PaginationContent = (props) => {
     let [searchParams, setSearchParams] = useSearchParams();
 
 	const currentPage = parseInt(searchParams.get("page")) || 1;
-
-	console.log("currentPage");
-	console.log(currentPage);
-
 	let response = props.response;
 	let maxPageNumber = getMaxPage(response);
     
 	return (
 		<>
 		<Stack spacing={2}>
-		<Pagination count={maxPageNumber} showFirstButton showLastButton />
+		<Pagination count={maxPageNumber} page={currentPage} showFirstButton showLastButton />
 	  </Stack> 
 		</>
 	);
