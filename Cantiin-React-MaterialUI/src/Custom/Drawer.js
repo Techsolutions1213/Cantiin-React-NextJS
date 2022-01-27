@@ -9,19 +9,24 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import DrawerList from "../Components/DrawerList";
 import Button from "@mui/material/Button";
 import AuthContext from "../Contexts/Authentication";
 
+/*Icons */
+import HomeIcon from '@mui/icons-material/Home';
+import MenuIcon from "@mui/icons-material/Menu";
+import InfoIcon from '@mui/icons-material/Info';
+import CategoryIcon from '@mui/icons-material/Category';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import LoginIcon from '@mui/icons-material/Login';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const drawerWidth = 240;
 
@@ -143,21 +148,21 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 				<Divider />
 
 				<DrawerList listItems={          [
-					{"linkText": "Home", icon:<InboxIcon />,link:"/"},
-					{"linkText": "About", icon:<InboxIcon />,link:"/about"},  
+					{"linkText": "Home", icon:<HomeIcon />,link:"/"},
+					{"linkText": "About", icon:<InfoIcon />,link:"/about"},  
 				]}/>
 
 
 				<Divider />
 				<DrawerList listItems={          [
-					{"linkText": "Products List", icon:<InboxIcon />,link:"/products"},
-					{"linkText": "Create Product", icon:<InboxIcon />,link:"/products/create"},  
+					{"linkText": "Products List", icon:<CategoryIcon />,link:"/products"},
+					{"linkText": "Create Product", icon:<AddCircleIcon />,link:"/products/create"},  
 				]}/>
 				<Divider />
 
 				<DrawerList listItems={          [
-					{"linkText": "Login", icon:<InboxIcon />,link:"/login"}, 
-					{"linkText": "Sign Up", icon:<InboxIcon />,link:"/signup"},
+					{"linkText": "Login", icon:<LoginIcon />,link:"/login"}, 
+					{"linkText": "Sign Up", icon:<AddBoxIcon />,link:"/signup"},
  
 				]}/>
 
