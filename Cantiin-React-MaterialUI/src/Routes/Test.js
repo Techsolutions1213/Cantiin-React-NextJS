@@ -57,7 +57,7 @@ export default function SignIn() {
 		
 		
 
-		fetchers.auth.login({username, password})
+		fetchers.auth.signup({username, password})
 			.then(function (response) {
 				successfulUserResponse(response);
 				window.location.replace("/");
