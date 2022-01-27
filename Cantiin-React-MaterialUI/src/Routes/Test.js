@@ -37,7 +37,7 @@ export default function SignIn() {
 
 
 	const [errMessage,setErrorMessage] = useState("");
-	const [formErrors,setFormErrors] = useState({"username":"a", "password":"a"});
+	const [formErrors,setFormErrors] = useState({"username":"", "password":""});
 
 	/*
 	const handleSubmit = (event) => {
@@ -60,6 +60,7 @@ export default function SignIn() {
 		const username=  formData.get("username");
 		const password= formData.get("password");
 		setErrorMessage("");
+		setFormErrors({"username":"", "password":""});
 		
 
 		fetchers.auth.login({username, password})
@@ -73,13 +74,7 @@ export default function SignIn() {
 		
 				let data = error.response.data;
 				console.log(data);
-				/*setForm({
-					...form,
-					errors:{
-						...form.errors,
-						...data
-					}
-				});*/
+				setFormErrors({...formErrors, ...data});
 			})
 			.catch(()=>{
 				console.log("second error");
