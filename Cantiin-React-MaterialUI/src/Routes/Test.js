@@ -37,6 +37,7 @@ export default function SignIn() {
 
 
 	const [errMessage,setErrorMessage] = useState("");
+	const [formErrors,setFormErrors] = useState("");
 
 	/*
 	const handleSubmit = (event) => {
@@ -67,9 +68,12 @@ export default function SignIn() {
 				window.location.replace("/");
 			})
 			.catch(function (error) {
-				/*				
+				console.log();
+				//setErrorMessage("Wrong Username or Password");
+		
 				let data = error.response.data;
-				setForm({
+				console.log(data);
+				/*setForm({
 					...form,
 					errors:{
 						...form.errors,
@@ -78,6 +82,7 @@ export default function SignIn() {
 				});*/
 			})
 			.catch(()=>{
+				console.log("second error");
 				setErrorMessage("Something went wrong");
 			});
 
