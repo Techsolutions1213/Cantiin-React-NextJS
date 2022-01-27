@@ -2,7 +2,7 @@ import { Component, Fragment, useState, useEffect } from "react";
 import {getItemsList, getAllResultsNumber,
 	getCurrentWindowPage,getCurrentResponsePage,
 	getApiResponsePage,getMaxPage} from "../../Functions/fetching/list";
-import Pagination from "../../Components/pagination";
+import PaginationOld from "../../Components/paginationold";
 import ProductCard from "../../Components/cards/product";
 
 
@@ -107,7 +107,7 @@ const ProductsList = () => {
 		return (
 			<div>
 				<h1>Products List:</h1>
-				<Pagination response={state.response}/>
+				<PaginationOld response={state.response}/>
 				<ul className="ProductsList">
 					{productsList}
 				</ul>
