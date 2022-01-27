@@ -38,15 +38,23 @@ export default function SignIn() {
 
 
 	const [errMessage,setErrorMessage] = useState("");
-	const [formErrors,setFormErrors] = useState({"username":"", "password":""});
+	const [formErrors,setFormErrors] = useState({username:"", password:"",repassword:""});
 
 	const handleSubmit = (event) =>{
 		event.preventDefault();
 		const formData = new FormData(event.currentTarget);
 		const username=  formData.get("username");
 		const password= formData.get("password");
+		const repassword= formData.get("repassword");
 		setErrorMessage("");
-		setFormErrors({"username":"", "password":""});
+		setFormErrors({username:"", password:"", repassword:""});
+		console.log(username);
+		console.log(password);
+		console.log(repassword);
+		if(password !== repassword){
+			console.log("Password mismatch");
+			setFormErrors({repassword:"Password Mismatch"});return;}
+		
 		
 
 		fetchers.auth.login({username, password})
@@ -108,7 +116,7 @@ export default function SignIn() {
 						<LockOutlinedIcon />
 					</Avatar>
 					<Typography component="h1" variant="h5">
-            		Sign in
+            			Sign Up
 					</Typography>
 					<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 						<TextField
@@ -136,6 +144,18 @@ export default function SignIn() {
 							helperText={formErrors.password||undefined}
 							onChange={handleChange}
 						/>
+						<TextField
+							margin="normal"
+							required
+							fullWidth
+							name="repassword"
+							label="Re-Password"
+							type="password"
+							id="repassword"
+							error={formErrors.repassword?true:false}
+							helperText={formErrors.repassword||undefined}
+							onChange={handleChange}
+						/>
 						<Typography sx={{
 							display:"flex",
 							justifyContent:"center",
@@ -149,16 +169,9 @@ export default function SignIn() {
 							variant="contained"
 							sx={{ mt: 3, mb: 2 }}
 						>
-              			Sign In
+              			Sign Up
 						</Button>
-						<Container  sx={{
-							display:"flex",
-							justifyContent:"center",
-						}}>
-								<Link href="/signup/" variant="body2">
-									{"Don't have an account? Sign Up"}
-								</Link>
-						</Container>
+
 					</Box>
 				</Box>
 			</Container>
