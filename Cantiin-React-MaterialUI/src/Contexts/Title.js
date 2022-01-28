@@ -3,7 +3,7 @@ import {createContext, Component} from 'react';
 export const TitleContext = createContext();
 
 class TitleContextProvider extends Component {
-    state = { title: "title" };
+    state = { title: "" };
 
     setHeaderTitle=(newTitle)=>{
         

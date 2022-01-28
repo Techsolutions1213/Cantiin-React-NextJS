@@ -1,4 +1,4 @@
-import { Component, Fragment, useState, useEffect } from "react";
+import { Component, Fragment, useState, useEffect, useContext } from "react";
 import {getItemsList, getAllResultsNumber,
 	getCurrentWindowPage,getCurrentResponsePage,
 	getApiResponsePage,getMaxPage} from "../../Functions/fetching/list";
@@ -7,6 +7,7 @@ import ProductCard from "../../Components/cards/product";
 import { Container } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Routes, Route,      Link, useNavigate, useSearchParams } from "react-router-dom";
+import { TitleContext } from "../../Contexts/Title";
 
 
 import fetchers from "../../Functions/fetchers";
@@ -26,6 +27,14 @@ const ProductsList = () => {
 	};
 
 	const [state,setState] = useState(initialState);
+
+
+
+	const {setHeaderTitle, headerTitle} = useContext(TitleContext);
+	useEffect(()=>{
+		setHeaderTitle("Products List");
+	}, [headerTitle]);
+
 
 
 	console.log(state);
