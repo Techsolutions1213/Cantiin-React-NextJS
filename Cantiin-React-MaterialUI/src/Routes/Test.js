@@ -9,9 +9,9 @@ import { Container } from '@mui/material';
 
 export default function ImgMediaCard() {
   return (
-    <Card sx={{ backgroundColor:"success" }}>
+    <Card >
 
-      <CardContent>
+      <CardContent >
         
         
         <div style={{display:"flex"}}>
@@ -26,9 +26,6 @@ export default function ImgMediaCard() {
         <Typography variant="body1" color="text.secondary" sx={{color:"darkgreen", fontWeight:"bold"}}>
           Price
         </Typography>
-
-        
-
       </CardContent>
 
     </Card>

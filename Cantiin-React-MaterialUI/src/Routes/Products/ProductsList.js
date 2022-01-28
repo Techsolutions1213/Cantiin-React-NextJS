@@ -3,7 +3,7 @@ import {getItemsList, getAllResultsNumber,
 	getCurrentWindowPage,getCurrentResponsePage,
 	getApiResponsePage,getMaxPage} from "../../Functions/fetching/list";
 import Pagination from "../../Components/pagination";
-import ProductCard from "../../Components/cards/product";
+import ProductCard from "../../Components/cards/Product";
 import { Container } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Routes, Route,      Link, useNavigate, useSearchParams } from "react-router-dom";
