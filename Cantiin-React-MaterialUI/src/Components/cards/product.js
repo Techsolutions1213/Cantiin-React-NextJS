@@ -33,7 +33,7 @@ export default function ProductCard(props) {
         </Typography>
         </div>
 
-        <Typography variant="body1" color="text.secondary" sx={{color:"darkgreen", fontWeight:"bold"}}>
+        <Typography variant="h6" color="text.secondary" sx={{color:"darkgreen", fontWeight:"bold"}}>
         ${state.product.price}
         </Typography>
       </CardContent>
