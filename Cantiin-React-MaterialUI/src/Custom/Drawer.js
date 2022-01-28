@@ -115,6 +115,18 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 		</>
 	);
 
+
+	const AuthSideList =  is_authenticated?<></> : (
+	<>
+	<Divider />
+	<DrawerList listItems={          [
+		{"linkText": "Login", icon:<LoginIcon sx={{color:"darkgreen"}}/>,link:"/login"}, 
+		{"linkText": "Sign Up", icon:<AddBoxIcon sx={{color:"magenta"}}/>,link:"/signup"},
+
+	]}/>
+	</>
+	);
+
 	//console.log(authState, Logout);
 
 	return (
@@ -164,23 +176,19 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 				<Divider />
 
 				<DrawerList listItems={          [
-					{"linkText": "Home", icon:<HomeIcon />,link:"/"},
-					{"linkText": "About", icon:<InfoIcon />,link:"/about"},  
+					{"linkText": "Home", icon:<HomeIcon sx={{color:"red"}}/>,link:"/"},
+					{"linkText": "About", icon:<InfoIcon sx={{color:"orange"}}/>,link:"/about"},  
 				]}/>
 
 
 				<Divider />
 				<DrawerList listItems={          [
-					{"linkText": "Products List", icon:<CategoryIcon />,link:"/products"},
-					{"linkText": "Create Product", icon:<AddCircleIcon />,link:"/products/create"},  
+					{"linkText": "Products List", icon:<CategoryIcon sx={{color:"brown"}}/>,link:"/products"},
+					{"linkText": "Create Product", icon:<AddCircleIcon sx={{color:"blue"}}/>,link:"/products/create"},  
 				]}/>
-				<Divider />
 
-				<DrawerList listItems={          [
-					{"linkText": "Login", icon:<LoginIcon />,link:"/login"}, 
-					{"linkText": "Sign Up", icon:<AddBoxIcon />,link:"/signup"},
- 
-				]}/>
+				{AuthSideList}
+				
 
 
 			</Drawer>
