@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cantiinreactmaterial-dev-184909-authRole",
+      "UnauthRoleArn": "arn:aws:iam::215332016127:role/amplify-cantiinreactmaterial-dev-184909-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::215332016127:role/amplify-cantiinreactmaterial-dev-184909-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-cantiinreactmaterial-dev-184909-deployment",
+      "UnauthRoleName": "amplify-cantiinreactmaterial-dev-184909-unauthRole",
+      "StackName": "amplify-cantiinreactmaterial-dev-184909",
+      "StackId": "arn:aws:cloudformation:us-east-2:215332016127:stack/amplify-cantiinreactmaterial-dev-184909/39e16ed0-805a-11ec-9c82-065e0dac0b6a",
+      "AmplifyAppId": "d2ehwgu036lbhk"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2ehwgu036lbhk",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
