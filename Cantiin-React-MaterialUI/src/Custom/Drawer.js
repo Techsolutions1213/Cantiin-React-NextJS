@@ -17,7 +17,13 @@ import ListItemText from "@mui/material/ListItemText";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import DrawerList from "../Components/DrawerList";
 import Button from "@mui/material/Button";
+
+
+
+
 import AuthContext from "../Contexts/Authentication";
+import { TitleContext } from "../Contexts/Title";
+
 
 
 
@@ -83,6 +89,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 	let navigate = useNavigate();
 
 
+	const {is_authenticated, LogOut} = useContext(AuthContext);
+	const {headerTitle} = useContext(TitleContext);
+
+
+	console.log(headerTitle);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -93,8 +104,6 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 	};
 
 
-	//const authContext = useContext(AuthContext);
-	const {is_authenticated, LogOut} = useContext(AuthContext);
 
 
 	const accountSection = is_authenticated?(

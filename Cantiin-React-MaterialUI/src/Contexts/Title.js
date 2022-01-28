@@ -3,16 +3,16 @@ import {createContext, Component} from 'react';
 export const TitleContext = createContext();
 
 class TitleContextProvider extends Component {
-    state = "";
+    state = { title: "title" };
 
     setHeaderTitle=(newTitle)=>{
-        this.setState(newTitle);
+        this.setState({ title: newTitle });
     }
 
     render() { 
         return ( 
         <TitleContext.Provider value={
-            {...this.state, setHeaderTitle:this.setHeaderTitle}}>
+            {headerTitle:this.state.title, setHeaderTitle:this.setHeaderTitle}}>
             {this.props.children}
         </TitleContext.Provider> );
     }
