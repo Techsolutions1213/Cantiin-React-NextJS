@@ -18,7 +18,7 @@ const PaginationContent = (props) => {
 		<>
 		<Stack spacing={2}>
 		<Pagination count={maxPageNumber} page={currentPage} onChange={handleChange} showFirstButton showLastButton 
-			variant="outlined" shape="rounded"
+			
 		color="secondary"
 		/>
 	  </Stack> 

@@ -19,6 +19,8 @@ import DrawerList from "../Components/DrawerList";
 import Button from "@mui/material/Button";
 import AuthContext from "../Contexts/Authentication";
 
+
+
 /*Icons */
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from "@mui/icons-material/Menu";
@@ -126,7 +128,7 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 					<HomeIcon sx={{mr:2,mt:.5, color:"white"}}/>
 					</Link>
 					<Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Canttin - Home
+            Cantiin - Home
 					</Typography>
 					{accountSection}
 
