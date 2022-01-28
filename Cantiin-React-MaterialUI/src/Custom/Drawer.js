@@ -137,7 +137,7 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 					<HomeIcon sx={{mr:2,mt:.5, color:"white"}}/>
 					</Link>
 					<Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Cantiin - Home
+            Cantiin - {headerTitle}
 					</Typography>
 					{accountSection}
 
