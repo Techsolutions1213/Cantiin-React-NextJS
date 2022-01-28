@@ -11,11 +11,11 @@ export default function ProductCard(props) {
     const [state, setState] = useState({"product":props.item});
     let productCardClassName= "productCard productCardOutOfStock";
     let inStockText = "Out Of Stock"; 
-    let inStockStyle = "productCard-Element productCard-productInStock productCard-productInStock-Out";
+    let inStockColor = "red";
     if(state.product.in_stock){
         productCardClassName= "productCard productCardInStock";
         inStockText = "In Stock";
-        inStockStyle = "productCard-Element productCard-productInStock productCard-productInStock-In";
+        inStockColor = "green";
     }
 
   return (
@@ -28,7 +28,7 @@ export default function ProductCard(props) {
         <Typography gutterBottom variant="h4" component="div" sx={{flexGrow:1}}>
           {state.product.name}
         </Typography>
-        <Typography gutterBottom variant="h6" component="div" sx={{color:"green"}}>
+        <Typography gutterBottom variant="h6" component="div" sx={{color: inStockColor}}>
             {inStockText}
         </Typography>
         </div>
