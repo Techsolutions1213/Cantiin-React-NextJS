@@ -6,7 +6,7 @@ import Drawer from "./Custom/Drawer";
 
 /*Contexts*/
 import { AuthContextProvider } from "./Contexts/Authentication";
-
+import TitleContextProvider from "./Contexts/Title";
 
 /* Routes */
 import Home from "./Routes/Home";
@@ -16,6 +16,7 @@ import SignUp from "./Routes/Auth/Signup";
 import CreateProduct from "./Routes/Products/CreateProduct";
 import ProductsList from "./Routes/Products/ProductsList";
 import TestRoute from "./Routes/Test";
+
 
 const App = ()=>{
 	const DrawerContent = (        
@@ -33,7 +34,9 @@ const App = ()=>{
 
 	return (
 		<AuthContextProvider>
-			<Drawer DrawerContent={DrawerContent} />
+			<TitleContextProvider>
+				<Drawer DrawerContent={DrawerContent} />
+			</TitleContextProvider>
 		</AuthContextProvider>
 	);
 };
