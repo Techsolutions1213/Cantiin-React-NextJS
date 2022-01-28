@@ -1,4 +1,4 @@
-import React,  {useState, useContext} from "react";
+import React,  {useState, useContext, useEffect} from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,7 +14,11 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import AuthContext from "../../Contexts/Authentication";
+import { TitleContext } from "../../Contexts/Title";
+
 import fetchers from "../../Functions/fetchers";
+
+
 
 
 
@@ -36,9 +40,19 @@ const theme = createTheme();
 export default function SignIn() {
 	const {successfulUserResponse} = useContext(AuthContext);
 
+	const {setHeaderTitle, headerTitle} = useContext(TitleContext);
+	useEffect(()=>{
+		setHeaderTitle("Login");
+	}, [headerTitle]);
 
 	const [errMessage,setErrorMessage] = useState("");
 	const [formErrors,setFormErrors] = useState({"username":"", "password":""});
+
+
+
+
+
+
 
 	const handleSubmit = (event) =>{
 		event.preventDefault();

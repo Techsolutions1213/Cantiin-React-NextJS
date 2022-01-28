@@ -6,6 +6,7 @@ class TitleContextProvider extends Component {
     state = { title: "title" };
 
     setHeaderTitle=(newTitle)=>{
+        
         this.setState({ title: newTitle });
     }
 
