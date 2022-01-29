@@ -2,7 +2,7 @@
 Creating a react frontend using MaterialUI  for Cantiin.com
 
 
-# Links:
+# A) Links:
 
 
 
@@ -23,7 +23,7 @@ https://cantiin-react.com</a>
 <tr>
 <th>Youtube</th>
 <td>
-<a href="https://www.youtube.com/watch?v=16v0MCEKS-c">https://www.youtube.com/watch?v=16v0MCEKS-c</a>
+<a href=""></a>
 </td>
 </tr>
 
@@ -38,21 +38,36 @@ https://cantiin-react.com</a>
 <tr>
 <th>Github Repository</th>
 <td>
-<a href="https://github.com/OmarThinks/Cantiin-React-Native">https://github.com/OmarThinks/Cantiin-React-Native</a>
+<a href="https://github.com/OmarThinks/Cantiin-React-MaterialUI">https://github.com/OmarThinks/Cantiin-React-MaterialUI</a>
 </td>
 </tr>
 
+</table>
 
 
 
 
 
 
-# Images:
+# B) Images:
+
+
+
+
+## B-1) Home Page:
 
 <img src="images/home.png"/>
+
+## B-2) Login Page:
 <img src="images/login.png"/>
+
+
+## B-3) Signup Page:
+
 <img src="images/signup.png"/>
+
+## B-4) After Sign up:
+
 <img src="images/logged_in.png"/>
 
 
