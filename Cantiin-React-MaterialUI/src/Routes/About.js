@@ -15,7 +15,9 @@ export default function About() {
 	return (
 		<>
 			<Typography paragraph>
-    About
+    
+	Github Repository: 
+	<a href="https://github.com/OmarThinks/Cantiin-React-MaterialUI">https://github.com/OmarThinks/Cantiin-React-MaterialUI</a>
 			</Typography>
 		</>
 	);
