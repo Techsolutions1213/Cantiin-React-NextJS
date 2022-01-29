@@ -48,25 +48,38 @@ https://cantiin-react.com</a>
 
 
 
-
-# B) Images:
-
+# B) Used Technologies:
 
 
+1. React
+2. Material UI
+3. React Router Dom
 
-## B-1) Home Page:
+
+
+
+
+
+
+
+# C) Images:
+
+
+
+
+## C-1) Home Page:
 
 <img src="images/home.png"/>
 
-## B-2) Login Page:
+## C-2) Login Page:
 <img src="images/login.png"/>
 
 
-## B-3) Signup Page:
+## C-3) Signup Page:
 
 <img src="images/signup.png"/>
 
-## B-4) After Sign up:
+## C-4) After Sign up:
 
 <img src="images/logged_in.png"/>
 
