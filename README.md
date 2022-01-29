@@ -1,4 +1,4 @@
-# Canttin-React-MaterialUI
+# Cantiin-React-MaterialUI
 Creating a react frontend using MaterialUI  for Cantiin.com
 
 
