@@ -116,6 +116,17 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 	);
 
 
+	const productsListContent = is_authenticated?(
+		[
+			{"linkText": "Products List", icon:<CategoryIcon sx={{color:"brown"}}/>,link:"/products"},
+			{"linkText": "Create Product", icon:<AddCircleIcon sx={{color:"blue"}}/>,link:"/products/create"},  
+		]
+	):(					
+		[
+			{"linkText": "Products List", icon:<CategoryIcon sx={{color:"brown"}}/>,link:"/products"},
+		]
+	);
+
 	const AuthSideList =  is_authenticated?<></> : (
 	<>
 	<Divider />
@@ -182,10 +193,7 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 
 
 				<Divider />
-				<DrawerList listItems={          [
-					{"linkText": "Products List", icon:<CategoryIcon sx={{color:"brown"}}/>,link:"/products"},
-					{"linkText": "Create Product", icon:<AddCircleIcon sx={{color:"blue"}}/>,link:"/products/create"},  
-				]}/>
+				<DrawerList listItems={productsListContent}/>
 
 				{AuthSideList}
 				
