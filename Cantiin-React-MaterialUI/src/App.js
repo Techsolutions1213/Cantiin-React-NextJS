@@ -101,6 +101,12 @@ const App = ()=>{
 		  palette: {
 			mode,
 		  },
+		  typography:{
+			  button:{
+				textTransform:"none",
+				fontSize:"1.25em"
+			}
+		  }
 		}),
 	  [mode],
 	);
