@@ -17,6 +17,31 @@ import CreateProduct from "./Routes/Products/CreateProduct";
 import ProductsList from "./Routes/Products/ProductsList";
 import TestRoute from "./Routes/Test";
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+import { amber, blue, blueGrey, brown, common, cyan, deepOrange, 
+	deepPurple, green, grey, indigo, lightBlue, lightGreen, lime, orange, pink, 
+	purple, red, teal, yellow } from '@mui/material/colors';
+
+
+
+
+console.log(blue);
+
+
+
+const theme = createTheme({
+	palette:{
+		primary:lightBlue
+	}
+  });
+
+
+
+console.log(theme);
+
+
 
 const App = ()=>{
 	const DrawerContent = (        
@@ -34,9 +59,11 @@ const App = ()=>{
 
 	return (
 		<AuthContextProvider>
-			<TitleContextProvider>
-				<Drawer DrawerContent={DrawerContent} />
-			</TitleContextProvider>
+			<ThemeProvider theme={theme}>
+				<TitleContextProvider>
+					<Drawer DrawerContent={DrawerContent} />
+				</TitleContextProvider>
+			</ThemeProvider>
 		</AuthContextProvider>
 	);
 };

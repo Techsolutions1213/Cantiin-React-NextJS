@@ -1,20 +1,17 @@
 import * as React from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { orange } from '@mui/material/colors';
 
 
- class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
+import { Button } from '@mui/material';
 
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-      </div>
-    );
-  }
+
+
+
+
+export default function CustomStyles() {
+  return (
+    <Button variant='contained' color='primary'>Wassup</Button>
+  );
 }
-
-export default Clock;
