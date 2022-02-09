@@ -86,7 +86,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 	justifyContent: "flex-end",
 }));
 
-export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
+export default function DrawerCustom({DrawerContent, DrawerHeaderCustom, toogler}) {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 	let navigate = useNavigate();
@@ -165,7 +165,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom}) {
 					<Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Cantiin - {headerTitle}
 					</Typography>
+
+					{toogler}
+
 					{accountSection}
+
 
 				</Toolbar>
 			</AppBar>
