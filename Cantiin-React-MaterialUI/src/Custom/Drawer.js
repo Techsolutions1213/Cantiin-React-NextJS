@@ -113,8 +113,8 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom, toogler
 		<Button color="error" variant="contained" sx={{mx:1}} onClick={()=>{LogOut();}}>Logout</Button>
 	):(					
 		<>
-			<Button color="info" variant="contained" sx={{mx:1}} onClick={()=>{navigate("/login/");}}>Login</Button>
-			<Button color="success" variant="contained" onClick={()=>{navigate("/signup/");}}>Signup</Button>
+			<Button color="success" variant="contained" sx={{mx:1}} onClick={()=>{navigate("/login/");}}>Login</Button>
+			<Button color="secondary" variant="contained" onClick={()=>{navigate("/signup/");}}>Signup</Button>
 		</>
 	);
 
