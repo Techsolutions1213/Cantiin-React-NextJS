@@ -110,11 +110,11 @@ export default function DrawerCustom({DrawerContent, DrawerHeaderCustom, toogler
 
 
 	const accountSection = is_authenticated?(
-		<Button color="inherit" onClick={()=>{LogOut();}}>Logout</Button>
+		<Button color="error" variant="contained" sx={{mx:1}} onClick={()=>{LogOut();}}>Logout</Button>
 	):(					
 		<>
-			<Button color="inherit" onClick={()=>{navigate("/login/");}}>Login</Button>
-			<Button color="inherit" onClick={()=>{navigate("/signup/");}}>Signup</Button>
+			<Button color="info" variant="contained" sx={{mx:1}} onClick={()=>{navigate("/login/");}}>Login</Button>
+			<Button color="success" variant="contained" onClick={()=>{navigate("/signup/");}}>Signup</Button>
 		</>
 	);
 
