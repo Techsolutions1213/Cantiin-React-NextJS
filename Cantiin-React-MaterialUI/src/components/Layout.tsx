@@ -148,7 +148,7 @@ export default function Layout({ children }) {
 
 
 
-  export default function Layout({ children }) {
+  export default function Layout ({ children }) : JSX.Element {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
