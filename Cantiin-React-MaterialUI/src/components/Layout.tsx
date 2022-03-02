@@ -20,7 +20,7 @@ export default function Layout({ children }) {
 
 
 
-  import * as React from 'react';
+  import React, { createContext } from 'react';
   import { styled, useTheme, Theme, CSSObject, createTheme, ThemeProvider } from '@mui/material/styles';
   import Box from '@mui/material/Box';
   import MuiDrawer from '@mui/material/Drawer';
@@ -35,7 +35,10 @@ export default function Layout({ children }) {
   import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
   import ChevronRightIcon from '@mui/icons-material/ChevronRight';
   import ListItem from '@mui/material/ListItem';
-  
+  import Brightness4Icon from '@mui/icons-material/Brightness4';
+  import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+
 /*Types*/
 
 import type { pageComponent } from '../types';
@@ -128,23 +131,11 @@ import type { pageComponent } from '../types';
 
 
 
-  interface  colorType { [index: number|number] : string};
 
 
 
 
-  declare module '@mui/material/styles' {
-    interface Theme {
-      status: { [index: string | number] : string};
-    }
-    // allow configuration using `createTheme`
-    interface ThemeOptions {
-      status?: { [index: string | number] : string};
-    }
-  }
-
-
-  const theme = createTheme();
+  const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 
 
@@ -162,13 +153,43 @@ import type { pageComponent } from '../types';
       setOpen(false);
     };
 
+
+
+
+
+    const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+    const colorMode = React.useMemo(
+      () => ({
+        toggleColorMode: () => {
+          setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        },
+      }),
+      [],
+    );
+  
+    const theme = React.useMemo(
+      () =>
+        createTheme({
+          palette: {
+            mode,
+          },
+        }),
+      [mode],
+    );
+
+
+
+
+
+
   
     return (
+      <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open}>
-          <Toolbar>
+        <AppBar position="fixed" open={open} >
+          <Toolbar sx={{display:"flex", flexDirection:"row"}}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -181,9 +202,12 @@ import type { pageComponent } from '../types';
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
+            <Typography variant="h6" noWrap component="div" sx={{flexGrow:1}}>
               Cantiin React - {pageHeader}
             </Typography>
+            <IconButton sx={{ ml: 1, alignSelf:"right" }} onClick={colorMode.toggleColorMode} color="inherit">
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -221,6 +245,7 @@ import type { pageComponent } from '../types';
         </Box>
       </Box>
       </ThemeProvider>
+      </ColorModeContext.Provider>
     );
   }
   
