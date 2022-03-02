@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { green } from '@mui/material/colors';
 
 /*Types*/
 import type { productObject } from '../types';
@@ -21,21 +21,26 @@ const bull = (
 );
 
 export default function ProductCard({product}:{product:productObject}):JSX.Element {
-  return (
-    <Card sx={{ minWidth: 275 }}>
+    
+    let inStockColor:string = product.in_stock?"green":"red";
+  
+    return (
+    <Card sx={{ minWidth: 275, mb:2 }}>
       <CardContent>
         
         <div style={{display:"flex", justifyContent:"space-between"}}>
 
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography variant="h4" color="success" gutterBottom>
           {product.name}
         </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography color={inStockColor} variant="h5" gutterBottom>
           {product.in_stock?"In Stock":"Out Of Stock"}
         </Typography>
         </div>
         <div>
-            ${product.price}
+            <Typography color={green[700]} sx={{fontWeight:"bold"}} variant="h6">
+                ${product.price}
+            </Typography>
         </div>
       </CardContent>
 

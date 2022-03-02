@@ -45,8 +45,6 @@ import type { pageComponent } from '../types';
   /*Colors*/
   import { orange } from '@mui/material/colors';
 
-
-
   /*Icons*/
   import ListItemIcon from '@mui/material/ListItemIcon';
   import ListItemText from '@mui/material/ListItemText';
@@ -146,16 +144,14 @@ import type { pageComponent } from '../types';
   }
 
 
-  const theme = createTheme({
-    status: orange,
-  });
+  const theme = createTheme();
 
 
 
   export default function Layout ({ children }) : JSX.Element {
     let pageHeader:string = children.type.header; 
     
-    const theme = useTheme();
+    //const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
     const handleDrawerOpen = () => {
@@ -165,8 +161,11 @@ import type { pageComponent } from '../types';
     const handleDrawerClose = () => {
       setOpen(false);
     };
+
+    console.log(theme);
   
     return (
+      <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed" open={open}>
@@ -222,6 +221,7 @@ import type { pageComponent } from '../types';
           {children}
         </Box>
       </Box>
+      </ThemeProvider>
     );
   }
   
