@@ -1,6 +1,7 @@
 import React from "react";
+import type { creatingPageComponent } from "../types";
 
-export default function Home({  }) :JSX.Element{
+export default function Home() :creatingPageComponent {
   return (
     <p>
       Hi
@@ -9,25 +10,3 @@ export default function Home({  }) :JSX.Element{
 }
 
 Home.header="Home";
-
-Home;
-
-
-
-type customNumber = number & { 
-  abc?: number 
-};
-
-
-let i:customNumber;
-i=1;
-i.abc=5;
-
-
-
-
-
-
-
-
-

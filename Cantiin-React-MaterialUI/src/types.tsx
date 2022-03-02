@@ -1,8 +1,8 @@
 import React from "react";
 
 
-export type creatingPageComponent =number & { pageHeader?: string };
-export type pageComponent = number & { pageHeader: string };
+export type creatingPageComponent = JSX.Element & { pageHeader?: string };
+export type pageComponent = JSX.Element & { pageHeader: string };
 
 
 
