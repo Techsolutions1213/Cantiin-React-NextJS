@@ -1,6 +1,11 @@
 import React,{Fragment} from "react";
 
+import Pagination from '@mui/material/Pagination';
+import Box from '@mui/material/Box';
+
+
 import ProductCard from "../../components/ProductCard";
+
 
 
 /*Types*/
@@ -43,11 +48,6 @@ const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
   {products:productObject[],fillProductsObject:any, pagesCount:number, currentPage:number}): 
   creatingPageComponent=>{
   
-    console.log(pagesCount);
-  
-  console.log(fillProductsObject);
-  
-  
   let productsComponent:JSX.Element[] = products.map((product:productObject)=>{
     return(
     <Fragment key={product.id}>
@@ -56,7 +56,19 @@ const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
   )});
   return (
   <>
-    {productsComponent}
+      <Box
+        display="flex"
+        justifyContent="center"
+      >
+        <Pagination count={pagesCount} color="secondary" />
+      </Box>
+        {productsComponent}
+      <Box
+        display="flex"
+        justifyContent="center"
+      >
+        <Pagination count={pagesCount} color="secondary" />
+      </Box>
   </>);
 }
 
