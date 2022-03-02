@@ -1,4 +1,4 @@
-import React,{Fragment} from "react";
+import React,{Fragment, useState} from "react";
 
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
@@ -47,6 +47,10 @@ export async function getServerSideProps(context) {
 const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
   {products:productObject[],fillProductsObject:any, pagesCount:number, currentPage:number}): 
   creatingPageComponent=>{
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number):void => {
+    
+  };
   
   let productsComponent:JSX.Element[] = products.map((product:productObject)=>{
     return(
@@ -59,15 +63,20 @@ const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
       <Box
         display="flex"
         justifyContent="center"
+        marginBottom={4}
       >
-        <Pagination count={pagesCount} color="secondary" />
+        <Pagination count={pagesCount} color="secondary" size="large"
+        onChange={handleChange} 
+        showFirstButton showLastButton/>
       </Box>
         {productsComponent}
       <Box
         display="flex"
         justifyContent="center"
       >
-        <Pagination count={pagesCount} color="secondary" />
+        <Pagination count={pagesCount} color="secondary" size="large"
+        onChange={handleChange} 
+        showFirstButton showLastButton/>
       </Box>
   </>);
 }
