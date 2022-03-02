@@ -36,6 +36,10 @@ export default function Layout({ children }) {
   import ChevronRightIcon from '@mui/icons-material/ChevronRight';
   import ListItem from '@mui/material/ListItem';
   
+/*Types*/
+
+import type { pageComponent } from '../types';
+
 
 
   /*Colors*/
@@ -149,6 +153,8 @@ export default function Layout({ children }) {
 
 
   export default function Layout ({ children }) : JSX.Element {
+    let pageHeader:string = children.type.header; 
+    
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -178,7 +184,7 @@ export default function Layout({ children }) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Mini variant drawer
+              Cantiin React - {pageHeader}
             </Typography>
           </Toolbar>
         </AppBar>
