@@ -1,7 +1,7 @@
-import React from "react";
+import React,{Fragment} from "react";
 
 /*Types*/
-import type { creatingPageComponent } from "../../types";
+import type { creatingPageComponent, productObject } from "../../types";
 
 
 
@@ -22,11 +22,21 @@ export async function getServerSideProps(context) {
 
 
 
-const ProductsList = ({products}): creatingPageComponent=>{
+const ProductsList = ({products}:{products:productObject[]}): creatingPageComponent=>{
   console.log(products);
+  let productsComponent:JSX.Element[] = products.map((product:productObject)=>{
+    return(
+    <Fragment key={product.id}>
+      <hr/>
+      <div>{product.id}</div>
+      <div>{product.in_stock}</div>
+      <div>{product.name}</div>
+      <div>{product.price}</div>
+    </Fragment>
+  )});
   return (
   <>
-    Products List
+    {productsComponent}
   </>);
 }
 
