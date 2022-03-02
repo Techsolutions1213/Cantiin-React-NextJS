@@ -162,7 +162,6 @@ import type { pageComponent } from '../types';
       setOpen(false);
     };
 
-    console.log(theme);
   
     return (
       <ThemeProvider theme={theme}>

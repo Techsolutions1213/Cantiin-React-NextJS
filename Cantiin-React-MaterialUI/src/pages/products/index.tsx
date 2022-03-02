@@ -17,8 +17,17 @@ export async function getServerSideProps(context) {
   // Default value is "1"
 
   const res = await fetch(`https://cantiin.com/api/products/?page=${page}`);
-  const products = await res.json();
-  return {props: {products: products.results}}
+  const products:{
+    count:number,
+    next:string|null, previous:string|null,
+    results:productObject[]
+  } = await res.json();
+
+  let pagesCount:number =parseInt((products.count/10).toPrecision(1))+1;
+
+
+
+  return {props: {products: products.results, fillProductsObject:products, pagesCount}}
   // will be passed to the page component as props
 }
 
@@ -28,8 +37,14 @@ export async function getServerSideProps(context) {
 
 
 
-const ProductsList = ({products}:{products:productObject[]}): creatingPageComponent=>{
-  console.log(products);
+const ProductsList = ({products, fillProductsObject, pagesCount}:
+  {products:productObject[],fillProductsObject:any, pagesCount:number}): creatingPageComponent=>{
+  
+    console.log(pagesCount);
+  
+  console.log(fillProductsObject);
+  
+  
   let productsComponent:JSX.Element[] = products.map((product:productObject)=>{
     return(
     <Fragment key={product.id}>
