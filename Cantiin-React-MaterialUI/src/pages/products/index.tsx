@@ -2,6 +2,7 @@ import React,{Fragment, useState} from "react";
 
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
+import { useRouter } from 'next/router';
 
 
 import ProductCard from "../../components/ProductCard";
@@ -45,11 +46,17 @@ export async function getServerSideProps(context) {
 
 
 const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
-  {products:productObject[],fillProductsObject:any, pagesCount:number, currentPage:number}): 
+  {products:productObject[],fillProductsObject:any, pagesCount:number, currentPage:string}): 
   creatingPageComponent=>{
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number):void => {
-    
+  const router = useRouter();
+
+  const handleChange = (event: React.ChangeEvent<unknown>, pageNumber: number):void => {
+    event.preventDefault()
+    router.push({
+      pathname: '/products',
+      query: { page: pageNumber.toString() },
+    });
   };
   
   let productsComponent:JSX.Element[] = products.map((product:productObject)=>{
@@ -63,19 +70,20 @@ const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
       <Box
         display="flex"
         justifyContent="center"
-        marginBottom={4}
+        marginBottom={3}
       >
         <Pagination count={pagesCount} color="secondary" size="large"
-        onChange={handleChange} 
+        onChange={handleChange} page={parseInt(currentPage)}
         showFirstButton showLastButton/>
       </Box>
         {productsComponent}
       <Box
         display="flex"
         justifyContent="center"
+        mt={4}
       >
         <Pagination count={pagesCount} color="secondary" size="large"
-        onChange={handleChange} 
+        onChange={handleChange} page={parseInt(currentPage)}
         showFirstButton showLastButton/>
       </Box>
   </>);
