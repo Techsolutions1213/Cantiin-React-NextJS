@@ -1,7 +1,13 @@
 import React,{Fragment} from "react";
 
+import ProductCard from "../../components/ProductCard";
+
+
 /*Types*/
 import type { creatingPageComponent, productObject } from "../../types";
+
+
+
 
 
 
@@ -32,6 +38,11 @@ const ProductsList = ({products}:{products:productObject[]}): creatingPageCompon
       <div>{product.in_stock}</div>
       <div>{product.name}</div>
       <div>{product.price}</div>
+
+
+      <ProductCard product={product}/>
+
+
     </Fragment>
   )});
   return (
