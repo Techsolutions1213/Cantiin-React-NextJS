@@ -27,7 +27,9 @@ export async function getServerSideProps(context) {
 
 
 
-  return {props: {products: products.results, fillProductsObject:products, pagesCount}}
+  return {props: {products: products.results, fillProductsObject:products, pagesCount, 
+  currentPage:page
+  }}
   // will be passed to the page component as props
 }
 
@@ -37,8 +39,9 @@ export async function getServerSideProps(context) {
 
 
 
-const ProductsList = ({products, fillProductsObject, pagesCount}:
-  {products:productObject[],fillProductsObject:any, pagesCount:number}): creatingPageComponent=>{
+const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
+  {products:productObject[],fillProductsObject:any, pagesCount:number, currentPage:number}): 
+  creatingPageComponent=>{
   
     console.log(pagesCount);
   
