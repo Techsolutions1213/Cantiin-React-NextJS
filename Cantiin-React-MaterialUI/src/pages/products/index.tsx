@@ -12,7 +12,7 @@ import type { creatingPageComponent, productObject } from "../../types";
 
 
 export async function getServerSideProps(context) {
-  const page:string = (parseInt(context.query.page) || "1").toString();
+  const page:string = (parseInt(context.query.page) || 1).toString();
   // Here we got the "page" query parameter from Context
   // Default value is "1"
 

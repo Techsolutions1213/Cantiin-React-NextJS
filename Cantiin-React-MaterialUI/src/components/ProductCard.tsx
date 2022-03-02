@@ -30,7 +30,7 @@ export default function ProductCard({product}:{product:productObject}):JSX.Eleme
         
         <div style={{display:"flex", justifyContent:"space-between"}}>
 
-        <Typography variant="h4" color="success" gutterBottom>
+        <Typography variant="h4" color="success" sx={{fontWeight:"bold"}} gutterBottom>
           {product.name}
         </Typography>
         <Typography color={inStockColor} variant="h5" gutterBottom>
