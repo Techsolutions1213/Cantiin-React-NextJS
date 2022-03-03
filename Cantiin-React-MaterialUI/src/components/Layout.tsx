@@ -155,6 +155,15 @@ import type { pageComponent } from '../types';
 
 
 
+    fetch("https://cantiin.com/api/auth/custom/user/",
+    {
+      mode: 'cors', 
+      cache: 'no-cache',
+      credentials:"include"}
+    ).then((res)=>{console.log(res)}).
+    catch(()=>{})
+    ;
+
 
 
     const [mode, setMode] = React.useState<'light' | 'dark'>('light');

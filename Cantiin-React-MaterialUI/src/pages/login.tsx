@@ -68,10 +68,12 @@ export default function LoginPage(): creatingPageComponent {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       setLoading(true);
+      setSomethingWentWrong(false);
       fetch("https://cantiin.com/api/auth/custom/login/",{
         method: 'POST',
         mode: 'cors', 
         cache: 'no-cache',
+        credentials:"include",
         headers: {
           'Content-Type': 'application/json'
         },
@@ -81,12 +83,10 @@ export default function LoginPage(): creatingPageComponent {
         if(response.status===200){
           router.push("/");}
         else{
-          console.log("Wrong Username or Password");
-          //setSomethingWentWrong(true);
-      }
-       
+          console.log(response);
+          formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
+        }
       }).
-      //catch((err)=>{console.log(response)}).
       catch((err)=>{
         setSomethingWentWrong(true);
       }).
