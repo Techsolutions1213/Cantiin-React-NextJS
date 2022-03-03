@@ -15,7 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useTheme } from '@emotion/react';
+import { ThemeContext, useTheme } from '@emotion/react';
 
 
 
@@ -122,8 +122,7 @@ export const ColorModeContext = React.createContext({ toggleColorMode: () => {} 
 
 
 
-
-export default ({ children })=>{
+const CustomDrawer=({ children })=>{
     
     let pageHeader:string = children.type.header; 
     //const theme = useTheme();
@@ -140,7 +139,18 @@ export default ({ children })=>{
 
 
 
+    let {loggedIn, logIn, logOut, refreshAccountContext} = useContext(ThemeContext);
 
+
+
+    useEffect(()=>{
+        refreshAccountContext();
+    },[]);
+    //Only Executed first time the layout is rendered
+
+
+    useEffect(()=>{},[loggedIn]);
+    //Every time the loggedIn var updates, the whole layout will render
 
 
 
@@ -166,6 +176,19 @@ export default ({ children })=>{
     );
 
 
+
+
+
+
+    //Login, Logiut, Sign Up buttons
+    let AccountButtons:JSX.Element = loggedIn?
+    <Button color='error' variant='contained'>Logout</Button>
+    :
+    <>
+        <Button color='info' variant='contained'>Login</Button>
+        <Button color='success' variant='contained'>Sign Up</Button>
+    </>
+    ;
 
 
 
@@ -200,9 +223,7 @@ export default ({ children })=>{
           <IconButton sx={{ ml: 1, alignSelf:"right" }} onClick={colorMode.toggleColorMode} color="inherit">
             {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
-            <Button color='info' variant='contained'>Login</Button>
-            <Button color='success' variant='contained'>Sign Up</Button>
-            <Button color='error' variant='contained'>Logout</Button>
+            {AccountButtons}
         </Stack>
       </Toolbar>
     </AppBar>
@@ -244,4 +265,6 @@ export default ({ children })=>{
   </ColorModeContext.Provider>
     );
 }
+
+export default CustomDrawer;
 
