@@ -53,6 +53,7 @@ import type { pageComponent } from '../types';
   import ListItemText from '@mui/material/ListItemText';
   import InboxIcon from '@mui/icons-material/MoveToInbox';
   import MailIcon from '@mui/icons-material/Mail';
+import { Button, Stack } from '@mui/material';
 
 
   
@@ -214,9 +215,15 @@ import type { pageComponent } from '../types';
             <Typography variant="h6" noWrap component="div" sx={{flexGrow:1}}>
               Cantiin React - {pageHeader}
             </Typography>
-            <IconButton sx={{ ml: 1, alignSelf:"right" }} onClick={colorMode.toggleColorMode} color="inherit">
-              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
+            
+            <Stack direction="row" spacing={1} sx={{display:"inline"}}>
+              <IconButton sx={{ ml: 1, alignSelf:"right" }} onClick={colorMode.toggleColorMode} color="inherit">
+                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+                <Button color='info' variant='contained'>Login</Button>
+                <Button color='success' variant='contained'>Sign Up</Button>
+                <Button color='error' variant='contained'>Logout</Button>
+            </Stack>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
