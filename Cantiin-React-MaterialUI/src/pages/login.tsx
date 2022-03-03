@@ -57,7 +57,8 @@ const validationSchema = yup.object({
 
 export default function LoginPage(): creatingPageComponent {
   const router = useRouter();
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
+  const [somethingWentWrong, setSomethingWEntWrong] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -148,7 +149,11 @@ export default function LoginPage(): creatingPageComponent {
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}    
             />
-            <Typography textAlign={"center"}>Something went wrong</Typography>
+            <Typography textAlign={"center"} color={"red"}
+              visibility={somethingWentWrong?"visible":"hidden"}
+            >
+              Something went wrong, maybe you are not connected to the internet
+            </Typography>
 
             <Button
               type="submit"
