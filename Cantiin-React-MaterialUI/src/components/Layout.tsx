@@ -39,8 +39,12 @@ export default function Layout({ children }) {
   import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 
-/*Types*/
 
+
+/*Contexts*/
+import AccountContextProvider, {AccountContext} from '../contexts/AccountContext';
+
+/*Types*/
 import type { pageComponent } from '../types';
 
 
@@ -194,6 +198,7 @@ import { Button, Stack } from '@mui/material';
 
   
     return (
+      <AccountContextProvider>
       <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
@@ -262,6 +267,7 @@ import { Button, Stack } from '@mui/material';
       </Box>
       </ThemeProvider>
       </ColorModeContext.Provider>
+      </AccountContextProvider>
     );
   }
   
