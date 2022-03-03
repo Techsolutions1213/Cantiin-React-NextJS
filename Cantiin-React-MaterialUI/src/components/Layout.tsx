@@ -21,7 +21,7 @@ export default function Layout({ children }) {
 
 
   import React, { createContext } from 'react';
-  import { styled, useTheme, Theme, CSSObject, createTheme, ThemeProvider } from '@mui/material/styles';
+  import { styled, Theme, CSSObject, createTheme, ThemeProvider } from '@mui/material/styles';
   import Box from '@mui/material/Box';
   import MuiDrawer from '@mui/material/Drawer';
   import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
