@@ -15,7 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-
+import { useTheme } from '@emotion/react';
 
 
 
@@ -118,6 +118,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 
+export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 
 
@@ -125,7 +126,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default ({ children })=>{
     
     let pageHeader:string = children.type.header; 
-    
     //const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -137,7 +137,45 @@ export default ({ children })=>{
       setOpen(false);
     };
 
+
+
+
+
+
+
+
+
+    const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+    const colorMode = React.useMemo(
+      () => ({
+        toggleColorMode: () => {
+          setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        },
+      }),
+      [],
+    );
+  
+    const theme = React.useMemo(
+      () =>
+        createTheme({
+          palette: {
+            mode,
+          },
+        }),
+      [mode],
+    );
+
+
+
+
+
+
+
+
+
     return(
+    <ColorModeContext.Provider value={colorMode}>
+    <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
     <CssBaseline />
     <AppBar position="fixed" open={open} >
@@ -202,6 +240,8 @@ export default ({ children })=>{
       {children}
     </Box>
   </Box>
+  </ThemeProvider>
+  </ColorModeContext.Provider>
     );
 }
 

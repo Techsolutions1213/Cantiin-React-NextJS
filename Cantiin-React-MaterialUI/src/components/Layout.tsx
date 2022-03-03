@@ -1,24 +1,3 @@
-/*
-
-import React from "react";
-
-export default function Layout({ children }) {
-    return (
-      <>
-        <div>Header</div>
-            {children}
-        <div>Footer</div>
-      </>
-    )
-  }
-
-  */
-
-
-
-
-
-
 
   import React, { useContext, useEffect } from 'react';
   import { styled, Theme, CSSObject, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -197,7 +176,8 @@ import { Button, Stack } from '@mui/material';
       <AccountContextProvider>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
-            <Drawer />
+            <Drawer>{children}</Drawer>
+
           </ThemeProvider>
         </ColorModeContext.Provider>
       </AccountContextProvider>
