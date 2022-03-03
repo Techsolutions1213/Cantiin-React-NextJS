@@ -58,7 +58,7 @@ const validationSchema = yup.object({
 export default function LoginPage(): creatingPageComponent {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [somethingWentWrong, setSomethingWEntWrong] = useState(false);
+  const [somethingWentWrong, setSomethingWentWrong] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -79,23 +79,27 @@ export default function LoginPage(): creatingPageComponent {
       }).
       then((response:{status:number})=>{
         if(response.status===200){
-          setLoading(false);
           router.push("/");}
         else{
           console.log("Wrong Username or Password");
-          setLoading(false);
+          //setSomethingWentWrong(true);
       }
        
       }).
       //catch((err)=>{console.log(response)}).
       catch((err)=>{
-        console.log("Something went wrong");
-        setLoading(false);
-      })
-      ;
+        setSomethingWentWrong(true);
+      }).
+      finally(()=>{try {setLoading(false);} catch (error){}});
     },
   });
 
+
+
+  const handleChange:((e:any)=>void) = (e:any) => {
+    setSomethingWentWrong(false);
+    formik.handleChange(e);
+  }
 
 
 
@@ -130,7 +134,7 @@ export default function LoginPage(): creatingPageComponent {
               autoComplete="username"
               autoFocus
               value={formik.values.username}
-              onChange={formik.handleChange}
+              onChange={handleChange}
               error={formik.touched.username && Boolean(formik.errors.username)}
               helperText={formik.touched.username && formik.errors.username}
      
@@ -145,16 +149,13 @@ export default function LoginPage(): creatingPageComponent {
               id="password"
               autoComplete="current-password"
               value={formik.values.password}
-              onChange={formik.handleChange}
+              onChange={handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}    
             />
-            <Typography textAlign={"center"} color={"red"}
-              visibility={somethingWentWrong?"visible":"hidden"}
-            >
+            {somethingWentWrong?<Typography textAlign={"center"} color={"red"}>
               Something went wrong, maybe you are not connected to the internet
-            </Typography>
-
+            </Typography>:<></>}
             <Button
               type="submit"
               fullWidth
