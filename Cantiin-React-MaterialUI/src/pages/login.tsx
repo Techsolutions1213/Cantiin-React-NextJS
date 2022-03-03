@@ -1,21 +1,22 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Formik } from 'formik';
+
+import { useRouter } from 'next/router';
+
+
+
 
 
 /* Types */
@@ -55,7 +56,8 @@ const validationSchema = yup.object({
 
 
 export default function LoginPage(): creatingPageComponent {
-
+  const router = useRouter();
+  const [loading, setLoading] = useState(false); 
 
   const formik = useFormik({
     initialValues: {
@@ -64,7 +66,7 @@ export default function LoginPage(): creatingPageComponent {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      setLoading(true);
       fetch("https://cantiin.com/api/auth/custom/login/",{
         method: 'POST',
         mode: 'cors', 
@@ -72,7 +74,24 @@ export default function LoginPage(): creatingPageComponent {
         headers: {
           'Content-Type': 'application/json'
         },
+        body: JSON.stringify(values)
+      }).
+      then((response:{status:number})=>{
+        if(response.status===200){
+          setLoading(false);
+          router.push("/");}
+        else{
+          console.log("Wrong Username or Password");
+          setLoading(false);
+      }
+       
+      }).
+      //catch((err)=>{console.log(response)}).
+      catch((err)=>{
+        console.log("Something went wrong");
+        setLoading(false);
       })
+      ;
     },
   });
 
@@ -134,6 +153,7 @@ export default function LoginPage(): creatingPageComponent {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={loading}
             >
               Login
             </Button>
