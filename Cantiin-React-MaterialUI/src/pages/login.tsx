@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,10 +17,14 @@ import { useRouter } from 'next/router';
 
 
 
+/*Contexts */
+
+import { AccountContext } from '../contexts/AccountContext';
 
 
 /* Types */
 import type { creatingPageComponent } from '../types';
+import { ThemeContext } from '@emotion/react';
 
 
 function Copyright(props: any) {
@@ -59,6 +63,7 @@ export default function LoginPage(): creatingPageComponent {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [somethingWentWrong, setSomethingWentWrong] = useState(false);
+  let {logIn} = useContext(AccountContext);
 
   const formik = useFormik({
     initialValues: {
@@ -81,6 +86,7 @@ export default function LoginPage(): creatingPageComponent {
       }).
       then((response:{status:number})=>{
         if(response.status===200){
+          logIn();
           router.push("/");
         }
         else{
