@@ -38,6 +38,8 @@ export default function Layout({ children }) {
   import Brightness4Icon from '@mui/icons-material/Brightness4';
   import Brightness7Icon from '@mui/icons-material/Brightness7';
 
+import Drawer from './Drawer';
+
 
 
 
@@ -114,7 +116,7 @@ import { Button, Stack } from '@mui/material';
       }),
     }),
   }));
-  
+  /*
   const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       width: drawerWidth,
@@ -132,6 +134,7 @@ import { Button, Stack } from '@mui/material';
     }),
   );
   
+*/
 
 
 
@@ -139,8 +142,7 @@ import { Button, Stack } from '@mui/material';
 
 
 
-
-  const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+  export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 
 
@@ -191,12 +193,21 @@ import { Button, Stack } from '@mui/material';
       [mode],
     );
 
+    return (
+      <AccountContextProvider>
+        <ColorModeContext.Provider value={colorMode}>
+          <ThemeProvider theme={theme}>
+            <Drawer />
+          </ThemeProvider>
+        </ColorModeContext.Provider>
+      </AccountContextProvider>
+    );
 
 
 
 
 
-  
+  /*
     return (
       <AccountContextProvider>
       <ColorModeContext.Provider value={colorMode}>
@@ -268,6 +279,6 @@ import { Button, Stack } from '@mui/material';
       </ThemeProvider>
       </ColorModeContext.Provider>
       </AccountContextProvider>
-    );
+    );*/
   }
   
