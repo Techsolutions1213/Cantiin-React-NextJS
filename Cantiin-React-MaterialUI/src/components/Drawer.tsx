@@ -177,13 +177,25 @@ const CustomDrawer=({ children })=>{
     );
 
 
+    let LogUserOut:()=>void = ()=>{
+        fetch("https://cantiin.com/api/auth/custom/logout/",{
+            method: 'GET',
+            mode: 'cors', 
+            cache: 'no-cache',
+            credentials:"include",
+          }).
+          then((response)=>{
+              if(response.status===200){logOut();}
+          }).catch()
+    }
 
 
+    
 
 
     //Login, Logiut, Sign Up buttons
     let AccountButtons:JSX.Element = loggedIn?
-    <Button color='error' variant='contained'>Logout</Button>
+    <Button color='error' variant='contained' onClick={LogUserOut}>Logout</Button>
     :
     <>
         <Button color='info' variant='contained'>Login</Button>

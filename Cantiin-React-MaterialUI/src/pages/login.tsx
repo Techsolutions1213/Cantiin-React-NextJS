@@ -81,7 +81,8 @@ export default function LoginPage(): creatingPageComponent {
       }).
       then((response:{status:number})=>{
         if(response.status===200){
-          router.push("/");}
+          router.push("/");
+        }
         else{
           console.log(response);
           formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
