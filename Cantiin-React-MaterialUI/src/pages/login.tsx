@@ -15,8 +15,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { Formik } from 'formik';
 
 
+/* Types */
+import type { creatingPageComponent } from '../types';
 
 
 function Copyright(props: any) {
@@ -40,10 +43,9 @@ function Copyright(props: any) {
 
 
 const validationSchema = yup.object({
-    email: yup
+    username: yup
       .string()
-      .email('Enter a valid email')
-      .required('Email is required'),
+      .required('Username or Email is required'),
     password: yup
       .string()
       .min(3, 'Password should be of minimum 3 characters length')
@@ -52,29 +54,29 @@ const validationSchema = yup.object({
 
 
 
-export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+export default function LoginPage(): creatingPageComponent {
 
 
   const formik = useFormik({
     initialValues: {
-      email: 'foobar@example.com',
-      password: 'foobar',
+      username: '',
+      password: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      fetch("https://cantiin.com/api/auth/custom/login/",{
+        method: 'POST',
+        mode: 'cors', 
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
     },
   });
+
+
 
 
 
@@ -93,22 +95,24 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login
           </Typography>
-          <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" 
+          onSubmit={formik.handleSubmit} 
+          noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="username"
               label="Username or Email"
-              name="email"
-              autoComplete="email"
+              name="username"
+              autoComplete="username"
               autoFocus
-              value={formik.values.email}
+              value={formik.values.username}
               onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
      
             />
             <TextField
@@ -125,17 +129,13 @@ export default function SignIn() {
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}    
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Login
             </Button>
             <Grid container>
               <Grid item xs>
@@ -155,3 +155,12 @@ export default function SignIn() {
       </Container>
   );
 }
+
+
+
+
+LoginPage.header="Login";
+
+
+
+
