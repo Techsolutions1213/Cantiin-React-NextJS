@@ -1,24 +1,38 @@
-import * as React from 'react';
+import React, {useState, useContext} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
+import { useRouter } from 'next/router';
+
+
+
+/*Contexts */
+
+import { AccountContext } from '../contexts/AccountContext';
+
+
+/* Types */
+import type { creatingPageComponent } from '../types';
+import { ThemeContext } from '@emotion/react';
+
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        Cantiin-React
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -27,16 +41,75 @@ function Copyright(props: any) {
 }
 
 
-export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+
+
+
+
+
+const validationSchema = yup.object({
+    username: yup
+      .string()
+      .required('Username or Email is required'),
+    password: yup
+      .string()
+      .min(3, 'Password should be of minimum 3 characters length')
+      .required('Password is required'),
+  });
+
+
+
+export default function SignupPage(): creatingPageComponent {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [somethingWentWrong, setSomethingWentWrong] = useState(false);
+  let {logIn} = useContext(AccountContext);
+
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      setLoading(true);
+      setSomethingWentWrong(false);
+      fetch("https://cantiin.com/api/auth/custom/login/",{
+        method: 'POST',
+        mode: 'cors', 
+        cache: 'no-cache',
+        credentials:"include",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      }).
+      then((response:{status:number})=>{
+        if(response.status===200){
+          logIn();
+          router.push("/");
+        }
+        else{
+          console.log(response);
+          formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
+        }
+      }).
+      catch((err)=>{
+        setSomethingWentWrong(true);
+      }).
+      finally(()=>{try {setLoading(false);} catch (error){}});
+    },
+  });
+
+
+
+  const handleChange:((e:any)=>void) = (e:any) => {
+    setSomethingWentWrong(false);
+    formik.handleChange(e);
+  }
+
+
+
 
   return (
       <Container component="main" maxWidth="xs">
@@ -53,18 +126,25 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" 
+          onSubmit={formik.handleSubmit} 
+          noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username or Email"
+              name="username"
+              autoComplete="username"
               autoFocus
+              value={formik.values.username}
+              onChange={handleChange}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
+     
             />
             <TextField
               margin="normal"
@@ -75,18 +155,22 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={formik.values.password}
+              onChange={handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}    
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+            {somethingWentWrong?<Typography textAlign={"center"} color={"red"}>
+              Something went wrong, maybe you are not connected to the internet
+            </Typography>:<></>}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={loading}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item xs>
@@ -106,3 +190,12 @@ export default function SignIn() {
       </Container>
   );
 }
+
+
+
+
+SignupPage.header="Sign Up";
+
+
+
+
