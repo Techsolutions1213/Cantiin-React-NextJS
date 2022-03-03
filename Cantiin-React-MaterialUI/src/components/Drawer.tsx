@@ -139,7 +139,7 @@ const CustomDrawer=({ children })=>{
 
 
 
-    let {loggedIn, logIn, logOut, refreshAccountContext} = useContext(ThemeContext);
+    let {loggedIn, logIn, logOut, refreshAccountContext} = useContext(AccountContext);
 
 
 
@@ -147,6 +147,7 @@ const CustomDrawer=({ children })=>{
         refreshAccountContext();
     },[]);
     //Only Executed first time the layout is rendered
+
 
 
     useEffect(()=>{},[loggedIn]);

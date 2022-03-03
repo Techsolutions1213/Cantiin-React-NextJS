@@ -24,8 +24,9 @@ const AccountContextProvider:(any)=>JSX.Element = (props):JSX.Element=>{
         credentials:"include",
       }).
       then((response:any)=>{
-        console.log(response.status);
-      })
+        if(response.status===200){setState({...state, loggedIn:true});}
+        else{setState({...state, loggedIn:false});}
+      }).catch(()=>{})
     }
 
     return ( 
