@@ -217,6 +217,26 @@ const CustomDrawer=({ children })=>{
 
 
 
+    let AccountSideBar:JSX.Element = loggedIn?
+    <></>
+    :
+    <>
+      <Divider />
+        <ListItem button onClick={()=>{router.push("/login")}}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Login" />
+        </ListItem>
+        
+        <ListItem button onClick={()=>{router.push("/signup")}}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Sign Up" />
+        </ListItem>
+    </>
+    ;
 
 
 
@@ -261,23 +281,32 @@ const CustomDrawer=({ children })=>{
       <Divider />
       <List>
         
+
+      <ListItem button onClick={()=>{router.push("/")}}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+        </ListItem>
         
-      <ListItem button>
+        <ListItem button onClick={()=>{router.push("/about")}}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Hi" />
+            <ListItemText primary="About" />
         </ListItem>
+
         <Divider />
-
-
-
-        <ListItem button>
+        <ListItem button onClick={()=>{router.push("/products")}}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Hi" />
+            <ListItemText primary="Products" />
         </ListItem>
+
+        
+
+        {AccountSideBar}
 
 
 
