@@ -47,6 +47,17 @@ import { Button, Stack } from '@mui/material';
 
 
 
+/*Icons */
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import CategoryIcon from '@mui/icons-material/Category';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import LoginIcon from '@mui/icons-material/Login';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+
+
+
+
 
 
 const drawerWidth = 240;
@@ -224,14 +235,14 @@ const CustomDrawer=({ children })=>{
       <Divider />
         <ListItem button onClick={()=>{router.push("/login")}}>
             <ListItemIcon>
-              <InboxIcon />
+              <LoginIcon />
             </ListItemIcon>
             <ListItemText primary="Login" />
         </ListItem>
         
         <ListItem button onClick={()=>{router.push("/signup")}}>
             <ListItemIcon>
-              <InboxIcon />
+              <AddBoxIcon />
             </ListItemIcon>
             <ListItemText primary="Sign Up" />
         </ListItem>
@@ -284,14 +295,14 @@ const CustomDrawer=({ children })=>{
 
       <ListItem button onClick={()=>{router.push("/")}}>
             <ListItemIcon>
-              <InboxIcon />
+              <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
         </ListItem>
         
         <ListItem button onClick={()=>{router.push("/about")}}>
             <ListItemIcon>
-              <InboxIcon />
+              <InfoIcon />
             </ListItemIcon>
             <ListItemText primary="About" />
         </ListItem>
@@ -299,7 +310,7 @@ const CustomDrawer=({ children })=>{
         <Divider />
         <ListItem button onClick={()=>{router.push("/products")}}>
             <ListItemIcon>
-              <InboxIcon />
+              <CategoryIcon />
             </ListItemIcon>
             <ListItemText primary="Products" />
         </ListItem>
