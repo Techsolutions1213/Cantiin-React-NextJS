@@ -260,25 +260,28 @@ const CustomDrawer=({ children })=>{
       </DrawerHeader>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+        
+        
+      <ListItem button>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
+            <ListItemText primary="Hi" />
+        </ListItem>
+        <Divider />
+
+
+
+        <ListItem button>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+            <ListItemText primary="Hi" />
+        </ListItem>
+
+
+
+
       </List>
     </Drawer>
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
