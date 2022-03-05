@@ -34,7 +34,7 @@ import type { pageComponent } from '../types';
 
 
 /*Colors*/
-import { orange } from '@mui/material/colors';
+import { lime, orange } from '@mui/material/colors';
 
 /*Icons*/
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -54,6 +54,9 @@ import CategoryIcon from '@mui/icons-material/Category';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+
+
+
 
 
 
@@ -228,25 +231,56 @@ const CustomDrawer=({ children })=>{
 
 
 
-    let AccountSideBar:JSX.Element = loggedIn?
-    <></>
-    :
-    <>
-      <Divider />
-        <ListItem button onClick={()=>{router.push("/login")}}>
+    let SideBarElelemnts:JSX.Element = (
+    <>  
+
+
+      <ListItem button onClick={()=>{router.push("/")}}>
             <ListItemIcon>
-              <LoginIcon />
+              <HomeIcon color='primary'/>
             </ListItemIcon>
-            <ListItemText primary="Login" />
+            <ListItemText primary="Home" />
         </ListItem>
         
-        <ListItem button onClick={()=>{router.push("/signup")}}>
+        <ListItem button onClick={()=>{router.push("/about")}}>
             <ListItemIcon>
-              <AddBoxIcon />
+              <InfoIcon color="warning"/>
             </ListItemIcon>
-            <ListItemText primary="Sign Up" />
+            <ListItemText primary="About" />
         </ListItem>
+
+        <Divider />
+        <ListItem button onClick={()=>{router.push("/products")}}>
+            <ListItemIcon>
+              <CategoryIcon color='secondary'/>
+            </ListItemIcon>
+            <ListItemText primary="Products" />
+        </ListItem>
+      
+    {loggedIn?
+      <></>
+      :
+      <>
+        <Divider />
+          <ListItem button onClick={()=>{router.push("/login")}}>
+              <ListItemIcon>
+                <LoginIcon color="success"/>
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+          </ListItem>
+          
+          <ListItem button onClick={()=>{router.push("/signup")}}>
+              <ListItemIcon>
+                <AddBoxIcon color="error"/>
+              </ListItemIcon>
+              <ListItemText primary="Sign Up" />
+          </ListItem>
+      </>
+    }
+
+
     </>
+    )
     ;
 
 
@@ -291,37 +325,7 @@ const CustomDrawer=({ children })=>{
       </DrawerHeader>
       <Divider />
       <List>
-        
-
-      <ListItem button onClick={()=>{router.push("/")}}>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-        </ListItem>
-        
-        <ListItem button onClick={()=>{router.push("/about")}}>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="About" />
-        </ListItem>
-
-        <Divider />
-        <ListItem button onClick={()=>{router.push("/products")}}>
-            <ListItemIcon>
-              <CategoryIcon />
-            </ListItemIcon>
-            <ListItemText primary="Products" />
-        </ListItem>
-
-        
-
-        {AccountSideBar}
-
-
-
-
+        {SideBarElelemnts}
       </List>
     </Drawer>
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
