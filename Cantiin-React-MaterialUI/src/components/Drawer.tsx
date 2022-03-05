@@ -248,15 +248,6 @@ const CustomDrawer=({ children })=>{
             </ListItemIcon>
             <ListItemText primary="About" />
         </ListItem>
-
-        <Divider />
-        <ListItem button onClick={()=>{router.push("/products")}}>
-            <ListItemIcon>
-              <CategoryIcon color='secondary'/>
-            </ListItemIcon>
-            <ListItemText primary="Products" />
-        </ListItem>
-      
     {loggedIn?
       <></>
       :
