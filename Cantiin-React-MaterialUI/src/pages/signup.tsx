@@ -55,7 +55,9 @@ const validationSchema = yup.object({
       .string()
       .min(3, 'Password should be of minimum 3 characters length')
       .required('Password is required'),
-  });
+    re_password: yup.string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
+    });
 
 
 
@@ -69,12 +71,13 @@ export default function SignupPage(): creatingPageComponent {
     initialValues: {
       username: '',
       password: '',
+      re_password:'',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       setLoading(true);
       setSomethingWentWrong(false);
-      fetch("https://cantiin.com/api/auth/custom/login/",{
+      fetch("https://cantiin.com/api/auth/custom/signup/",{
         method: 'POST',
         mode: 'cors', 
         cache: 'no-cache',
@@ -138,7 +141,6 @@ export default function SignupPage(): creatingPageComponent {
               id="username"
               label="Username or Email"
               name="username"
-              autoComplete="username"
               autoFocus
               value={formik.values.username}
               onChange={handleChange}
@@ -154,12 +156,28 @@ export default function SignupPage(): creatingPageComponent {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
               value={formik.values.password}
               onChange={handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}    
             />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="re_password"
+              label="Confirm Password"
+              type="password"
+              id="re_password"
+              value={formik.values.re_password}
+              onChange={handleChange}
+              error={formik.touched.re_password && Boolean(formik.errors.re_password)}
+              helperText={formik.touched.re_password && formik.errors.re_password}    
+            />
+
+
+
+
             {somethingWentWrong?<Typography textAlign={"center"} color={"red"}>
               Something went wrong, maybe you are not connected to the internet
             </Typography>:<></>}
