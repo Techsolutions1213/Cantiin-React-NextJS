@@ -138,7 +138,6 @@ export default function LoginPage(): creatingPageComponent {
               id="username"
               label="Username or Email"
               name="username"
-              autoComplete="username"
               autoFocus
               value={formik.values.username}
               onChange={handleChange}
@@ -154,7 +153,6 @@ export default function LoginPage(): creatingPageComponent {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
               value={formik.values.password}
               onChange={handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
