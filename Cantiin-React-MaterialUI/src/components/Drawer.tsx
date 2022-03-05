@@ -17,8 +17,9 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ThemeContext, useTheme } from '@emotion/react';
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
+import Link from 'next/link';
 
 
 
@@ -204,10 +205,12 @@ const CustomDrawer=({ children })=>{
     <Button color='error' variant='contained' onClick={LogUserOut}>Logout</Button>
     :
     <>
-        <Button color='info' variant='contained' onClick={()=>{router.push("/login")}}>
-            Login</Button>
-        <Button color='success' variant='contained' onClick={()=>{router.push("/signup")}}>
-            Sign Up</Button>
+        <Link href="/login">
+          <Button color='info' variant='contained'>Login</Button>
+        </Link>
+        <Link href="/signup">
+          <Button color='success' variant='contained'>Sign Up</Button>
+        </Link>
     </>
     ;
 
