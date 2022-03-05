@@ -179,6 +179,7 @@ const CustomDrawer=({ children })=>{
           palette: {
             mode,
           },
+          typography:{button:{textTransform:"none", fontWeight:"bold"}}
         }),
       [mode],
     );
