@@ -59,7 +59,7 @@ const ProductsList = (): creatingPageComponent=>{
 
 
   const handleChange = (event: React.ChangeEvent<unknown>, pageNumber: number):void => {
-    event.preventDefault()
+    event.preventDefault();
     router.push({
       pathname: '/',
       query: { page: pageNumber.toString() },

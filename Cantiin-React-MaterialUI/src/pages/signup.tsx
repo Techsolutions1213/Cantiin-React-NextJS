@@ -87,13 +87,15 @@ export default function SignupPage(): creatingPageComponent {
         },
         body: JSON.stringify(values)
       }).
-      then((response:{status:number})=>{
+      then((response:{status:number, [index:string]:any})=>{
         if(response.status===200){
           logIn();
           router.push("/");
         }
         else{
-          console.log(response);
+          console.log("response", response);
+          //console.log(response.body);
+
           formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
         }
       }).
