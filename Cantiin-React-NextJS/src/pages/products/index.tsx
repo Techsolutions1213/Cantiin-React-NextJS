@@ -137,7 +137,7 @@ const ProductsList = (): creatingPageComponent=>{
 
 
 
-ProductsList.header="ProductsList";
+ProductsList.header="Products List";
 
 
 export default ProductsList;

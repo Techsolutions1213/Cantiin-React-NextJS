@@ -56,7 +56,7 @@ const validationSchema = yup.object({
       .min(3, 'Password should be of minimum 3 characters length')
       .required('Password is required'),
     re_password: yup.string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match'),
+    .oneOf([yup.ref('password'), null], 'Passwords must match').required("Confirm Password is required"),
     });
 
 
