@@ -93,10 +93,17 @@ export default function SignupPage(): creatingPageComponent {
           router.push("/");
         }
         else{
-          console.log("response", response);
+          response.json().then((resJSON)=>{
+            formik.setErrors({...formik.errors, ...resJSON});
+          }).catch(()=>{
+            setSomethingWentWrong(true);
+          })
+
+
+          //console.log("response", response);
           //console.log(response.body);
 
-          formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
+          //formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
         }
       }).
       catch((err)=>{
