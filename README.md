@@ -71,7 +71,8 @@ https://cantiin-react.com</a>
 
 ## C-1) Home Page:
 
-<img src="images/home.png"/>
+<img src="images/01.png"/>
+<img src="images/02.png"/>
 
 ## C-2) Login Page:
 <img src="images/login.png"/>
