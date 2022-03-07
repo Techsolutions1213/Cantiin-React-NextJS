@@ -10,6 +10,14 @@
       "StackName": "amplify-cantiinreactmaterial-dev-164749",
       "StackId": "arn:aws:cloudformation:us-east-2:215332016127:stack/amplify-cantiinreactmaterial-dev-164749/955e99e0-996e-11ec-81a3-065de3832df4",
       "AmplifyAppId": "dwi6h9qqk1ktp"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dwi6h9qqk1ktp",
+          "type": "manual"
+        }
+      }
     }
   }
 }

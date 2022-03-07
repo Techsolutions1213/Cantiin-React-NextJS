@@ -1,5 +1,5 @@
 {
-  "projectName": "CantiinReactMaterial",
+  "projectName": "CantiinReactNext",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
@@ -7,8 +7,8 @@
     "config": {
       "SourceDir": "src",
       "DistributionDir": "build",
-      "BuildCommand": "npm.cmd run-script build",
-      "StartCommand": "npm.cmd run-script start"
+      "BuildCommand": "npm run build",
+      "StartCommand": "npm run start"
     }
   },
   "providers": [

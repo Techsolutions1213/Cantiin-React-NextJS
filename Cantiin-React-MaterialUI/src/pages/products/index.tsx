@@ -41,15 +41,33 @@ export async function getServerSideProps(context) {
 
 
 
-
-
-
-
-const ProductsList = ({products, fillProductsObject, pagesCount, currentPage}:
-  {products:productObject[],fillProductsObject:any, pagesCount:number, currentPage:string}): 
+const ProductsList = ({
+  //products, 
+  fillProductsObject, 
+  //pagesCount, 
+  //currentPage
+}:
+  {
+    //products:productObject[],
+    fillProductsObject:any, 
+    //pagesCount:number, 
+    //currentPage:string
+  }): 
   creatingPageComponent=>{
 
   const router = useRouter();
+
+
+  let [loading, setLoading]=useState(true);
+  let [products, setProducts]:[products:productObject[], setProducts:any]=useState([]);
+  let [pagesCount, setPagesCount] = useState(0);
+  let [currentPage, setCurrentPage] = useState("1");
+
+    
+
+
+
+
 
   const handleChange = (event: React.ChangeEvent<unknown>, pageNumber: number):void => {
     event.preventDefault()
