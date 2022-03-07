@@ -23,7 +23,7 @@ https://cantiin-react.com</a>
 <tr>
 <th>Youtube</th>
 <td>
-<a href="https://www.youtube.com/watch?v=tV87kHBrct0">https://www.youtube.com/watch?v=tV87kHBrct0</a>
+<a href="https://www.youtube.com/watch?v=sBj2vWlMLfc">https://www.youtube.com/watch?v=sBj2vWlMLfc</a>
 </td>
 </tr>
 
@@ -38,7 +38,7 @@ https://cantiin-react.com</a>
 <tr>
 <th>Github Repository</th>
 <td>
-<a href="https://github.com/OmarThinks/Cantiin-React-MaterialUI">https://github.com/OmarThinks/Cantiin-React-MaterialUI</a>
+<a href="https://github.com/OmarThinks/Cantiin-React-NextJS">https://github.com/OmarThinks/Cantiin-React-NextJS</a>
 </td>
 </tr>
 
@@ -53,7 +53,9 @@ https://cantiin-react.com</a>
 
 1. React
 2. Material UI
-3. React Router Dom
+3. Formik & Yup
+4. NextJS
+5. AWS Amplify (Frontend Only)
 
 
 
