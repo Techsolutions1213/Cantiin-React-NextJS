@@ -98,12 +98,6 @@ export default function SignupPage(): creatingPageComponent {
           }).catch(()=>{
             setSomethingWentWrong(true);
           })
-
-
-          //console.log("response", response);
-          //console.log(response.body);
-
-          //formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
         }
       }).
       catch((err)=>{

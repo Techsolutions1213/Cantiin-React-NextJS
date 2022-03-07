@@ -90,16 +90,14 @@ export default function LoginPage(): creatingPageComponent {
           router.push("/");
         }
         else{
-          console.log("response", response);
-          console.log(response.body());
-
-          formik.setErrors({...formik.errors, password:"Wrong Username or Password"});
+          response.json().then((resJSON)=>{
+            formik.setErrors({...formik.errors, ...resJSON});
+          }).catch(()=>{
+            setSomethingWentWrong(true);
+          })
         }
-      })
-      /*.catch(()=>{
-
-      })*/
-      .catch((err)=>{
+      }).
+      catch((err)=>{
         setSomethingWentWrong(true);
       }).
       finally(()=>{try {setLoading(false);} catch (error){}});
