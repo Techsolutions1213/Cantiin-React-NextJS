@@ -15,7 +15,7 @@ import type { creatingPageComponent, productObject } from "../../types";
 
 
 
-
+/*
 
 export async function getServerSideProps(context) {
   const page:string = (parseInt(context.query.page) || 1).toString();
@@ -39,29 +39,18 @@ export async function getServerSideProps(context) {
   // will be passed to the page component as props
 }
 
+*/
 
-
-const ProductsList = ({
-  //products, 
-  fillProductsObject, 
-  //pagesCount, 
-  //currentPage
-}:
-  {
-    //products:productObject[],
-    fillProductsObject:any, 
-    //pagesCount:number, 
-    //currentPage:string
-  }): 
-  creatingPageComponent=>{
+const ProductsList = (): creatingPageComponent=>{
 
   const router = useRouter();
 
 
   let [loading, setLoading]=useState(true);
-  let [products, setProducts]:[products:productObject[], setProducts:any]=useState([]);
-  let [pagesCount, setPagesCount] = useState(0);
-  let [currentPage, setCurrentPage] = useState("1");
+  
+  let [productsObject, setProductsObject]:
+  [productsObject:{products:productObject[], pagesCount:number, currentPage:string}, setProductsObject:any] = 
+  useState({products:[], pagesCount:1, currentPage:"1"});
 
     
 
@@ -77,7 +66,7 @@ const ProductsList = ({
     });
   };
   
-  let productsComponent:JSX.Element[] = products.map((product:productObject)=>{
+  let productsComponent:JSX.Element[] =productsObject.products.map((product:productObject)=>{
     return(
     <Fragment key={product.id}>
       <ProductCard product={product}/>
@@ -90,8 +79,8 @@ const ProductsList = ({
         justifyContent="center"
         marginBottom={3}
       >
-        <Pagination count={pagesCount} color="secondary" size="large"
-        onChange={handleChange} page={parseInt(currentPage)}
+        <Pagination count={productsObject.pagesCount} color="secondary" size="large"
+        onChange={handleChange} page={parseInt(productsObject.currentPage)}
         showFirstButton showLastButton/>
       </Box>
         {productsComponent}
@@ -100,8 +89,8 @@ const ProductsList = ({
         justifyContent="center"
         mt={4}
       >
-        <Pagination count={pagesCount} color="secondary" size="large"
-        onChange={handleChange} page={parseInt(currentPage)}
+        <Pagination count={productsObject.pagesCount} color="secondary" size="large"
+        onChange={handleChange} page={parseInt(productsObject.currentPage)}
         showFirstButton showLastButton/>
       </Box>
   </>);
