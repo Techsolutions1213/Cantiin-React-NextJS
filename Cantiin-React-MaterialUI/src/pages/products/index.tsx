@@ -1,4 +1,4 @@
-import React,{Fragment, useState} from "react";
+import React,{Fragment, useState, useEffect} from "react";
 
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
@@ -44,17 +44,36 @@ export async function getServerSideProps(context) {
 
 const ProductsList = (): creatingPageComponent=>{
 
-  const router = useRouter();
-
+  const router:any = useRouter();
+  console.log(router);
+  const currentPage:string = (parseInt(router.query.page) || 1).toString();
+  console.log(currentPage);
 
   let [loading, setLoading]=useState(true);
   
   let [productsObject, setProductsObject]:
-  [productsObject:{products:productObject[], pagesCount:number, currentPage:string}, setProductsObject:any] = 
-  useState({products:[], pagesCount:1, currentPage:"1"});
+  [productsObject:{products:productObject[], pagesCount:number}, setProductsObject:any] = 
+  useState({products:[], pagesCount:1});
 
     
 
+  useEffect(()=>{
+    
+    (async()=>{
+      const res = await fetch(`https://cantiin.com/api/products/?page=${currentPage}`);
+      const products:{
+        count:number,
+        next:string|null, previous:string|null,
+        results:productObject[]
+      } = await res.json();
+    
+      let pagesCount:number =parseInt((products.count/10).toPrecision(1))+1;
+      
+      setProductsObject({products:products.results, pagesCount});
+      setLoading(false);
+
+    })()
+  }, [currentPage]);
 
 
 
@@ -69,6 +88,25 @@ const ProductsList = (): creatingPageComponent=>{
     });
   };
   
+
+  console.log("productsObject",productsObject);
+
+
+  if(productsObject.products===undefined){
+    
+    setProductsObject({products:[], pagesCount:1});
+
+    router.push({
+      pathname: '/products',
+      query: { page: 1 },
+    });
+    return
+
+
+  }
+
+
+
   let productsComponent:JSX.Element =
   loading?<Typography align="center" variant="h3">Loading...</Typography>:
   <>
@@ -105,7 +143,7 @@ const ProductsList = (): creatingPageComponent=>{
         marginBottom={3}
       >
         <Pagination count={productsObject.pagesCount} color="secondary" size="large"
-        onChange={handleChange} page={parseInt(productsObject.currentPage)}
+        onChange={handleChange} page={parseInt(currentPage)}
         showFirstButton showLastButton/>
       </Box>
         {productsComponent}
@@ -115,7 +153,7 @@ const ProductsList = (): creatingPageComponent=>{
         mt={4}
       >
         <Pagination count={productsObject.pagesCount} color="secondary" size="large"
-        onChange={handleChange} page={parseInt(productsObject.currentPage)}
+        onChange={handleChange} page={parseInt(currentPage)}
         showFirstButton showLastButton/>
       </Box>
   </>);
