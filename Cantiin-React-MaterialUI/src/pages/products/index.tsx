@@ -11,6 +11,7 @@ import ProductCard from "../../components/ProductCard";
 
 /*Types*/
 import type { creatingPageComponent, productObject } from "../../types";
+import { Typography } from "@mui/material";
 
 
 
@@ -58,6 +59,8 @@ const ProductsList = (): creatingPageComponent=>{
 
 
 
+
+
   const handleChange = (event: React.ChangeEvent<unknown>, pageNumber: number):void => {
     event.preventDefault()
     router.push({
@@ -66,12 +69,34 @@ const ProductsList = (): creatingPageComponent=>{
     });
   };
   
-  let productsComponent:JSX.Element[] =productsObject.products.map((product:productObject)=>{
-    return(
-    <Fragment key={product.id}>
-      <ProductCard product={product}/>
-    </Fragment>
-  )});
+  let productsComponent:JSX.Element =
+  loading?<Typography align="center" variant="h3">Loading...</Typography>:
+  <>
+    {productsObject.products.map((product:productObject)=>{
+      return(
+      <Fragment key={product.id}>
+        <ProductCard product={product}/>
+      </Fragment>
+    )})}
+  </>
+  ;
+  
+  
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
   return (
   <>
       <Box
