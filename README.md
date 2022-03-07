@@ -72,19 +72,55 @@ https://cantiin-react.com</a>
 ## C-1) Home Page:
 
 <img src="images/01.png"/>
+
+
+
+## C-2) Dark Theme:
+
 <img src="images/02.png"/>
 
-## C-2) Login Page:
-<img src="images/login.png"/>
+
+## C-3) Side Drawer:
+
+<img src="images/03.png"/>
 
 
-## C-3) Signup Page:
 
-<img src="images/signup.png"/>
 
-## C-4) After Sign up:
 
-<img src="images/logged_in.png"/>
+
+
+## C-4) Signup Page:
+
+<img src="images/04.png"/>
+
+
+
+## C-5) Login Page:
+<img src="images/05.png"/>
+
+
+
+
+
+
+
+## C-6) Form Validation:
+<img src="images/06.png"/>
+
+
+
+
+
+
+
+
+
+## C-7) After Logging in:
+
+<img src="images/07.png"/>
+
+
 
 
 
