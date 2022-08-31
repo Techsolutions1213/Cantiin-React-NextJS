@@ -42,6 +42,23 @@ https://cantiin-react.com</a>
 </td>
 </tr>
 
+
+
+
+
+
+<tr>
+<th>Related Projects</th>
+<td>
+<a href="https://github.com/OmarThinks/cantiin_django">Cantiin Django</a><br>
+<a href="https://github.com/OmarThinks/Cantiin-React-Native">Cantiin React Native</a>
+</td>
+</tr>
+
+
+
+
+
 </table>
 
 
