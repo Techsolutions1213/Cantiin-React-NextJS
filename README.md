@@ -14,7 +14,7 @@ Creating a react frontend using MaterialUI for Cantiin.com
 <th>Website (Deployed on AWS Amplify)</th>
 <td>
 <p >
-https://cantiin-react.com</a> (The website is down dew to the Egyptian Currency Crisis)
+https://cantiin-react.com</p> (The website is down dew to the Egyptian Currency Crisis)
 </td>
 </tr>
 
